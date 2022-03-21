@@ -4,17 +4,16 @@ import { View, StyleSheet, Text, ImageBackground } from "react-native";
 import AppButton from "../../components/AppButton";
 import AppFormField from "../../components/forms/AppFormField";
 import colors from "../../config/colors";
-import { Spartan_700Bold } from "@expo-google-fonts/spartan";
 import { PlayfairDisplay_600SemiBold } from "@expo-google-fonts/playfair-display";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import AppText from "../../components/texts/AppText";
 import LinkText from "../../components/texts/LinkText";
 import ScreenTitle from "../../components/texts/ScreenTitle";
+import Logo from "../../components/texts/Logo";
 
 function LoginScreen({ navigation }) {
   let [fontsLoaded, error] = useFonts({
-    Spartan_700Bold,
     PlayfairDisplay_600SemiBold,
   });
 
@@ -26,9 +25,9 @@ function LoginScreen({ navigation }) {
     <View style={styles.bg}>
       <ImageBackground
         style={styles.top}
-        source={require("../../assets/login-bg.jpg")}
+        source={require("../../assets/login-bg.png")}
       >
-        <Text style={styles.logo}>Tidy.</Text>
+        <Logo />
         <Text style={styles.tagLine}>Let's talk {"\n"}wardrobe...</Text>
       </ImageBackground>
       <View style={styles.loginContainer}>

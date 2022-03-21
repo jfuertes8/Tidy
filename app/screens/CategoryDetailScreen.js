@@ -42,9 +42,9 @@ function CategoryDetailScreen({ route }) {
         source={require("../assets/category-bg.png")}
         style={styles.header}
       >
-        <ScreenTitle color="white">Camisetas</ScreenTitle>
+        <ScreenTitle color="white">{route.params.title}</ScreenTitle>
         <View style={styles.elements}>
-          <AppText color="white">4 elementos</AppText>
+          <AppText color="white">{route.params.subtitle}</AppText>
         </View>
         <View style={styles.wardrobe}>
           <AppText color="white">Armario de casa</AppText>

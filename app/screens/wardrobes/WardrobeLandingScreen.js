@@ -5,6 +5,8 @@ import Card from "../../components/Card";
 import colors from "../../config/colors";
 import ScreenTitle from "../../components/texts/ScreenTitle";
 import AppText from "../../components/texts/AppText";
+import Logo from "../../components/texts/Logo";
+import Screen from "../../components/Screen";
 
 /*
         <FlatList
@@ -52,31 +54,39 @@ const cardData = [
 
 function WardrobeLandingScreen({ navigation }) {
   return (
-    <View style={styles.bg}>
-      <ScreenTitle marginBottom={5}>Tus armarios</ScreenTitle>
-      <AppText marginBottom={30}>¡Hola Javier!</AppText>
-      <FlatList
-        data={cardData}
-        keyExtractor={(card) => card.id.toString()}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <Card
-            title={item.title}
-            subtitle={item.subtitle}
-            image={require("../../assets/wardrobeimg.png")}
-            onPress={() => {
-              navigation.navigate("Detalle de armario", item);
-            }}
-          ></Card>
-        )}
-      />
-    </View>
+    <>
+      <Screen>
+        <View style={styles.bg}>
+          <Logo marginVertical={10} />
+          <ScreenTitle marginBottom={5}>Tus armarios</ScreenTitle>
+          <AppText marginBottom={30}>¡Hola Javier!</AppText>
+          <FlatList
+            data={cardData}
+            keyExtractor={(card) => card.id.toString()}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item }) => (
+              <Card
+                title={item.title}
+                subtitle={item.subtitle}
+                image={require("../../assets/wardrobeimg.png")}
+                onPress={() => {
+                  navigation.navigate("WardrobeDetail", {
+                    title: item.title,
+                    location: item.subtitle,
+                  });
+                }}
+              ></Card>
+            )}
+          />
+        </View>
+      </Screen>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   bg: {
-    paddingHorizontal: 20,
+    padding: 20,
     backgroundColor: colors.gray,
     flex: 1,
     justifyContent: "center",

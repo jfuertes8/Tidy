@@ -8,6 +8,8 @@ import { Ionicons } from "@expo/vector-icons";
 import ScreenTitle from "../components/texts/ScreenTitle";
 import AppText from "../components/texts/AppText";
 import SectionTitle from "../components/texts/SectionTitle";
+import Logo from "../components/texts/Logo";
+import Screen from "../components/Screen";
 
 /*
         <FlatList
@@ -61,53 +63,58 @@ const pastTrips = [
 
 function WardrobeLandingScreen({ navigation }) {
   return (
-    <View style={styles.bg}>
-      <View style={styles.topSection}>
-        <ScreenTitle marginBottom={5}>Tus viajes</ScreenTitle>
-        <AppText marginBottom={30}>¡Hola Javier!</AppText>
-        <SectionTitle>Tu viaje activo</SectionTitle>
-        <View style={styles.activeTripCard}>
-          <Image
-            source={require("../assets/lugagge.png")}
-            style={styles.activeImage}
-          />
-          <View style={styles.tripData}>
-            <View style={styles.dataSection}>
-              <ScreenTitle color="white">MAD</ScreenTitle>
-              <AppText color="white">Madrid</AppText>
-            </View>
-            <View style={styles.dataSection}>
-              <Ionicons
-                name="ios-airplane-sharp"
-                size={20}
-                color={colors.black}
+    <>
+      <Screen>
+        <View style={styles.bg}>
+          <View style={styles.topSection}>
+            <Logo marginVertical={10} />
+            <ScreenTitle marginBottom={5}>Tus viajes</ScreenTitle>
+            <AppText marginBottom={30}>¡Hola Javier!</AppText>
+            <SectionTitle>Tu viaje activo</SectionTitle>
+            <View style={styles.activeTripCard}>
+              <Image
+                source={require("../assets/lugagge.png")}
+                style={styles.activeImage}
               />
+              <View style={styles.tripData}>
+                <View style={styles.dataSection}>
+                  <ScreenTitle color="white">MAD</ScreenTitle>
+                  <AppText color="white">Madrid</AppText>
+                </View>
+                <View style={styles.dataSection}>
+                  <Ionicons
+                    name="ios-airplane-sharp"
+                    size={20}
+                    color={colors.black}
+                  />
+                </View>
+                <View style={styles.dataSection}>
+                  <ScreenTitle color="white">TOK</ScreenTitle>
+                  <AppText color="white">Tokio</AppText>
+                </View>
+              </View>
             </View>
-            <View style={styles.dataSection}>
-              <ScreenTitle color="white">TOK</ScreenTitle>
-              <AppText color="white">Tokio</AppText>
-            </View>
+            <SectionTitle>Tus viajes anteriores</SectionTitle>
+          </View>
+          <View style={styles.section}>
+            <FlatList
+              data={pastTrips}
+              keyExtractor={(card) => card.id.toString()}
+              showsVerticalScrollIndicator={false}
+              renderItem={({ item }) => (
+                <CategorySelector
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  icon="calendar"
+                  onPress={() => navigation.navigate("TripDetail")}
+                />
+              )}
+              ItemSeparatorComponent={ListItemSeparator}
+            />
           </View>
         </View>
-        <SectionTitle>Tus viajes anteriores</SectionTitle>
-      </View>
-      <View style={styles.section}>
-        <FlatList
-          data={pastTrips}
-          keyExtractor={(card) => card.id.toString()}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => (
-            <CategorySelector
-              title={item.title}
-              subtitle={item.subtitle}
-              icon="calendar"
-              onPress={() => navigation.navigate("Detalle del viaje")}
-            />
-          )}
-          ItemSeparatorComponent={ListItemSeparator}
-        />
-      </View>
-    </View>
+      </Screen>
+    </>
   );
 }
 
@@ -159,6 +166,7 @@ const styles = StyleSheet.create({
   },
   topSection: {
     paddingHorizontal: 20,
+    paddingTop: 20,
   },
   section: {
     flex: 1,

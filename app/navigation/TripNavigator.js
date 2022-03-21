@@ -1,8 +1,6 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-
 import TripsLandingScreen from "../screens/TripsLandingScreen";
 import TripDetailScreen from "../screens/TripDetailScreen";
 import colors from "../config/colors";
@@ -12,32 +10,17 @@ const Stack = createNativeStackNavigator();
 const TripNavigator = ({ navigation }) => (
   <Stack.Navigator>
     <Stack.Screen
-      name=" "
+      name="TripsFeed"
       component={TripsLandingScreen}
       options={{
-        headerLeft: () => (
-          <MaterialCommunityIcons
-            name="menu"
-            size={25}
-            onPress={() => {
-              navigation.openDrawer();
-            }}
-          />
-        ),
-        headerTitleStyle: {
-          fontWeight: "bold",
-          fontSize: 20,
-        },
-        headerStyle: {
-          backgroundColor: colors.gray,
-        },
-        headerShadowVisible: false,
+        headerShown: false,
       }}
     />
     <Stack.Screen
-      name="Detalle del viaje"
+      name="TripDetail"
       component={TripDetailScreen}
       options={{
+        title: "Detalle del viaje",
         headerShadowVisible: false,
         headerStyle: {
           backgroundColor: colors.gray,

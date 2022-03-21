@@ -55,8 +55,8 @@ function WardrobeCategoryScreen({ navigation, route }) {
             source={require("../../assets/wardrobeimg.png")}
             style={styles.image}
           />
-          <ScreenTitle>Armario de casa</ScreenTitle>
-          <AppText>Madrid</AppText>
+          <ScreenTitle>{route.params?.title}</ScreenTitle>
+          <AppText>{route.params?.location}</AppText>
         </View>
         <FlatList
           data={categoriesList}
@@ -66,7 +66,7 @@ function WardrobeCategoryScreen({ navigation, route }) {
               title={item.title}
               subtitle={item.subtitle}
               image={item.image}
-              onPress={() => navigation.navigate("Detalle de categoría", item)}
+              onPress={() => navigation.navigate("CategoryDetail", item)}
             />
           )}
           ItemSeparatorComponent={ListItemSeparator}

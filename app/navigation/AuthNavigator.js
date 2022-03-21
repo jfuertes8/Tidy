@@ -4,7 +4,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "../screens/prelogin/LoginScreen";
 import NewUserScreen from "../screens/prelogin/NewUserScreen";
 import colors from "../config/colors";
-import DrawerNavigator from "./DrawerNavigation";
+import WardrobeNavigator from "./WardrobeNavigator";
+import TabNavigator from "./TabNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,7 +28,7 @@ const AuthNavigator = () => (
     />
     <Stack.Screen
       name="LoginOk"
-      component={DrawerNavigator}
+      component={TabNavigator}
       options={{
         headerShown: false,
       }}

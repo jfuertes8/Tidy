@@ -1,14 +1,14 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
 
-import { Spartan_700Bold } from "@expo-google-fonts/spartan";
+import { Spartan_500Medium } from "@expo-google-fonts/spartan";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import colors from "../../config/colors";
 
 function ScreenTitle({ children, marginBottom, color = "black" }) {
   let [fontsLoaded, error] = useFonts({
-    Spartan_700Bold,
+    Spartan_500Medium,
   });
 
   if (!fontsLoaded) {
@@ -30,7 +30,7 @@ function ScreenTitle({ children, marginBottom, color = "black" }) {
 const styles = StyleSheet.create({
   text: {
     fontSize: 25,
-    fontFamily: "Spartan_700Bold",
+    fontFamily: "Spartan_500Medium",
   },
 });
 

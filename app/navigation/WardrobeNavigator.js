@@ -1,12 +1,10 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-
 import WardrobeLandingScreen from "../screens/wardrobes/WardrobeLandingScreen";
 import WardrobeCategoryScreen from "../screens/wardrobes/WardrobeCategoryScreen";
-import colors from "../config/colors";
 import CategoryDetailScreen from "../screens/CategoryDetailScreen";
+import colors from "../config/colors";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,32 +12,17 @@ function WardrobeNavigator({ navigation, route }) {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name=" "
+        name="WardrobesFeed"
         component={WardrobeLandingScreen}
         options={{
-          headerLeft: () => (
-            <MaterialCommunityIcons
-              name="menu"
-              size={25}
-              onPress={() => {
-                navigation.openDrawer();
-              }}
-            />
-          ),
-          headerTitleStyle: {
-            fontWeight: "bold",
-            fontSize: 20,
-          },
-          headerStyle: {
-            backgroundColor: colors.gray,
-          },
-          headerShadowVisible: false,
+          headerShown: false,
         }}
       />
       <Stack.Screen
-        name="Detalle de armario"
+        name="WardrobeDetail"
         component={WardrobeCategoryScreen}
         options={{
+          title: "Detalle del armario",
           headerShadowVisible: false,
           headerStyle: {
             backgroundColor: colors.gray,
@@ -47,8 +30,11 @@ function WardrobeNavigator({ navigation, route }) {
         }}
       />
       <Stack.Screen
-        name="Detalle de categoría"
+        name="CategoryDetail"
         component={CategoryDetailScreen}
+        options={{
+          title: "Detalle de la categoría",
+        }}
       />
     </Stack.Navigator>
   );
