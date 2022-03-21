@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, View, Image, FlatList } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  FlatList,
+  TouchableWithoutFeedback,
+} from "react-native";
 
 import CategorySelector from "../components/CategorySelector";
 import ListItemSeparator from "../components/ListItemSeparator";
@@ -38,26 +44,52 @@ import Screen from "../components/Screen";
         </View>
 */
 
+const activeTrip = {
+  id: 1,
+  date: "13 Abril - 17 Abril",
+  origin: "Madrid",
+  originShort: "MAD",
+  dest: "Tokio",
+  destShort: "TOK",
+  active: true,
+};
+
 const pastTrips = [
   {
     id: 1,
     title: "Madrid - Sevilla",
-    subtitle: "13 Abril - 17 Abril",
+    date: "13 Abril - 17 Abril",
+    origin: "Madrid",
+    originShort: "MAD",
+    dest: "Sevilla",
+    destShort: "SEV",
   },
   {
     id: 2,
     title: "Madrid - Nueva York",
-    subtitle: "1 Abril - 18 Abril",
+    date: "1 Abril - 18 Abril",
+    origin: "Madrid",
+    originShort: "MAD",
+    dest: "Nueva York",
+    destShort: "NYC",
   },
   {
     id: 3,
     title: "Madrid - Londres",
-    subtitle: "15 Marzo - 19 Marzo",
+    date: "15 Marzo - 19 Marzo",
+    origin: "Madrid",
+    originShort: "MAD",
+    dest: "Londres",
+    destShort: "LON",
   },
   {
     id: 4,
     title: "Madrid - Valencia",
-    subtitle: "9 febrero - 11 febrero",
+    date: "9 febrero - 11 febrero",
+    origin: "Madrid",
+    originShort: "MAD",
+    dest: "Valencia",
+    destShort: "VAL",
   },
 ];
 
@@ -71,29 +103,37 @@ function WardrobeLandingScreen({ navigation }) {
             <ScreenTitle marginBottom={5}>Tus viajes</ScreenTitle>
             <AppText marginBottom={30}>¡Hola Javier!</AppText>
             <SectionTitle>Tu viaje activo</SectionTitle>
-            <View style={styles.activeTripCard}>
-              <Image
-                source={require("../assets/lugagge.png")}
-                style={styles.activeImage}
-              />
-              <View style={styles.tripData}>
-                <View style={styles.dataSection}>
-                  <ScreenTitle color="white">MAD</ScreenTitle>
-                  <AppText color="white">Madrid</AppText>
-                </View>
-                <View style={styles.dataSection}>
-                  <Ionicons
-                    name="ios-airplane-sharp"
-                    size={20}
-                    color={colors.black}
-                  />
-                </View>
-                <View style={styles.dataSection}>
-                  <ScreenTitle color="white">TOK</ScreenTitle>
-                  <AppText color="white">Tokio</AppText>
+            <TouchableWithoutFeedback
+              onPress={() => navigation.navigate("TripDetail", activeTrip)}
+            >
+              <View style={styles.activeTripCard}>
+                <Image
+                  source={require("../assets/lugagge.png")}
+                  style={styles.activeImage}
+                />
+                <View style={styles.tripData}>
+                  <View style={styles.dataSection}>
+                    <ScreenTitle color="white">
+                      {activeTrip.originShort}
+                    </ScreenTitle>
+                    <AppText color="white">{activeTrip.origin}</AppText>
+                  </View>
+                  <View style={styles.dataSection}>
+                    <Ionicons
+                      name="ios-airplane-sharp"
+                      size={20}
+                      color={colors.black}
+                    />
+                  </View>
+                  <View style={styles.dataSection}>
+                    <ScreenTitle color="white">
+                      {activeTrip.destShort}
+                    </ScreenTitle>
+                    <AppText color="white">{activeTrip.dest}</AppText>
+                  </View>
                 </View>
               </View>
-            </View>
+            </TouchableWithoutFeedback>
             <SectionTitle>Tus viajes anteriores</SectionTitle>
           </View>
           <View style={styles.section}>
@@ -104,9 +144,9 @@ function WardrobeLandingScreen({ navigation }) {
               renderItem={({ item }) => (
                 <CategorySelector
                   title={item.title}
-                  subtitle={item.subtitle}
+                  subtitle={item.date}
                   icon="calendar"
-                  onPress={() => navigation.navigate("TripDetail")}
+                  onPress={() => navigation.navigate("TripDetail", item)}
                 />
               )}
               ItemSeparatorComponent={ListItemSeparator}

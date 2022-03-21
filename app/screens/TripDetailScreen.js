@@ -42,26 +42,33 @@ const categoriesList = [
   },
 ];
 
-function TripDetailScreen(props) {
+function TripDetailScreen({ route }) {
+  const trip = route.params;
+
   return (
     <View style={styles.bg}>
       <View style={styles.tripTicketContainer}>
         <Image source={require("../assets/lugagge.png")} style={styles.image} />
         <View style={styles.tripTicketInfo}>
-          <AppText style={styles.dates}>25 Marzo - 7 Abril 2022</AppText>
+          <AppText style={styles.dates}>{trip.date}</AppText>
           <View style={styles.cities}>
             <View style={styles.section}>
-              <ScreenTitle>MAD</ScreenTitle>
-              <AppText>Madrid</AppText>
+              <ScreenTitle>{trip.originShort}</ScreenTitle>
+              <AppText>{trip.origin}</AppText>
             </View>
             <View style={styles.section}>
               <Ionicons name="ios-airplane-sharp" size={20} color="black" />
             </View>
             <View style={styles.section}>
-              <ScreenTitle>MAL</ScreenTitle>
-              <AppText>Maldivas</AppText>
+              <ScreenTitle>{trip.destShort}</ScreenTitle>
+              <AppText>{trip.dest}</AppText>
             </View>
           </View>
+          {trip.active && (
+            <View style={styles.tag}>
+              <AppText color="white">Activo</AppText>
+            </View>
+          )}
         </View>
       </View>
       <View style={styles.sectionTitle}>
@@ -106,7 +113,7 @@ const styles = StyleSheet.create({
   },
   cities: {
     flexDirection: "row",
-    width: 250,
+    width: 300,
     marginVertical: 20,
   },
   section: {
@@ -117,6 +124,14 @@ const styles = StyleSheet.create({
   sectionTitle: {
     width: "100%",
     padding: 15,
+  },
+  tag: {
+    padding: 5,
+    width: 80,
+    borderRadius: 100,
+    backgroundColor: colors.primary,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

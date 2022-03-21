@@ -6,7 +6,7 @@ import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import colors from "../../config/colors";
 
-function LinkText({ children, onPress, marginLeft }) {
+function LinkText({ children, onPress, marginLeft, color = "primary" }) {
   let [fontsLoaded, error] = useFonts({
     Spartan_700Bold,
   });
@@ -17,7 +17,11 @@ function LinkText({ children, onPress, marginLeft }) {
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <Text style={[styles.text, { marginLeft: marginLeft }]}>{children}</Text>
+      <Text
+        style={[styles.text, { marginLeft: marginLeft, color: colors[color] }]}
+      >
+        {children}
+      </Text>
     </TouchableWithoutFeedback>
   );
 }

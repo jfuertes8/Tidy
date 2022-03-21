@@ -1,49 +1,39 @@
 import React from "react";
-import { View, FlatList, StyleSheet, ImageBackground } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 
 import Screen from "../components/Screen";
-import AppText from "../components/texts/AppText";
+import Logo from "../components/texts/Logo";
 import ScreenTitle from "../components/texts/ScreenTitle";
 import ListItemSeparator from "../components/ListItemSeparator";
 import CategorySelector from "../components/CategorySelector";
+import AppText from "../components/texts/AppText";
 
 const settingsOptions = [
   {
     id: 1,
-    title: "Tu cuenta",
+    title: "Mi cuenta",
     icon: "account-circle-outline",
+    destScreen: "Account",
   },
   {
     id: 2,
-    title: "Información de la App",
-    icon: "cellphone-information",
+    title: "Menciones",
+    icon: "trophy-variant-outline",
+    destScreen: "Credits",
   },
   {
     id: 3,
-    title: "Menciones",
-    icon: "trophy-variant-outline",
-  },
-  {
-    id: 4,
     title: "Cerrar sesión",
     icon: "logout",
+    destScreen: "Login",
   },
 ];
 
-function SettingsScreen(props) {
+function SettingsScreen({ navigation }) {
   return (
     <Screen>
       <View style={styles.bg}>
-        <View style={styles.header}>
-          <ImageBackground
-            source={require("../assets/man.png")}
-            style={styles.avatar}
-          />
-          <View style={styles.headerInfo}>
-            <AppText>Javier</AppText>
-            <AppText color="darkgray">javier@email.com</AppText>
-          </View>
-        </View>
+        <Logo marginVertical={10} />
         <View style={styles.body}>
           <ScreenTitle marginBottom={15}>Ajustes</ScreenTitle>
           <FlatList
@@ -55,10 +45,15 @@ function SettingsScreen(props) {
                 title={item.title}
                 subtitle={item.subtitle}
                 icon={item.icon}
+                chevron={item.chevron}
+                onPress={() => navigation.navigate(item.destScreen)}
               />
             )}
             ItemSeparatorComponent={ListItemSeparator}
           />
+          <View style={styles.bottom}>
+            <AppText>Versión de la app: 1.0.0</AppText>
+          </View>
         </View>
       </View>
     </Screen>
@@ -70,19 +65,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
   },
-  header: {
+  body: { flex: 1 },
+  bottom: {
     width: "100%",
-    height: 100,
-    flexDirection: "row",
     alignItems: "center",
   },
-  avatar: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    marginRight: 15,
-  },
-  body: { flex: 1 },
 });
 
 export default SettingsScreen;

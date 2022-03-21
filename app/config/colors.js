@@ -6,5 +6,5 @@ export default {
   darkgray: "#b8b8b8",
   gray: "#F2F2F2",
 
-  pickerColor: "#E8E2CE",
+  danger: "tomato",
 };

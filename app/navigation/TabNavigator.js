@@ -5,9 +5,9 @@ import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import WardrobeNavigator from "../navigation/WardrobeNavigator";
 import TripNavigator from "../navigation/TripNavigator";
 import CreateNewNavigator from "../navigation/CreateNewNavigator";
-import SettingsScreen from "../screens/SettingsScreen";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import SettingsNavigator from "./SettingsNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -47,6 +47,16 @@ const TabNavigator = () => (
       })}
     />
     <Tab.Screen
+      name="Settings"
+      component={SettingsNavigator}
+      options={({ route }) => ({
+        tabBarStyle: { display: getTabBarVisibility(route) },
+        tabBarIcon: ({ color, size }) => (
+          <Ionicons name="settings-outline" size={size} color={color} />
+        ),
+      })}
+    />
+    <Tab.Screen
       name="New"
       component={CreateNewNavigator}
       options={({ route }) => ({
@@ -60,15 +70,6 @@ const TabNavigator = () => (
         ),
       })}
     />
-    <Tab.Screen
-      name="Settings"
-      component={SettingsScreen}
-      options={{
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons name="settings-outline" size={size} color={color} />
-        ),
-      }}
-    />
   </Tab.Navigator>
 );
 
@@ -81,7 +82,8 @@ const getTabBarVisibility = (route) => {
     routeName === "TripDetail" ||
     routeName === "NewWardrobe" ||
     routeName === "NewTrip" ||
-    routeName === "NewClothe"
+    routeName === "NewClothe" ||
+    routeName === "Credits"
   ) {
     return "none";
   } else {
