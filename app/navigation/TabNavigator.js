@@ -83,7 +83,8 @@ const getTabBarVisibility = (route) => {
     routeName === "NewWardrobe" ||
     routeName === "NewTrip" ||
     routeName === "NewClothe" ||
-    routeName === "Credits"
+    routeName === "Credits" ||
+    routeName === "Account"
   ) {
     return "none";
   } else {

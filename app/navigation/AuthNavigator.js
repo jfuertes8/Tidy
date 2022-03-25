@@ -19,6 +19,7 @@ const AuthNavigator = () => (
       name="Crear cuenta"
       component={NewUserScreen}
       options={{
+        title: " ",
         headerStyle: {
           backgroundColor: colors.white,
         },

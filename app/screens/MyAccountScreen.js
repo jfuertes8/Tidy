@@ -1,9 +1,9 @@
 import React from "react";
-import { View, ImageBackground, StyleSheet } from "react-native";
+import { View, ImageBackground, StyleSheet, ScrollView } from "react-native";
 
 import AppText from "../components/texts/AppText";
 import LinkText from "../components/texts/LinkText";
-import ScreenTitle from "../components/texts/ScreenTitle";
+import SectionTitle from "../components/texts/SectionTitle";
 import colors from "../config/colors";
 
 function MyAccountScreen(props) {
@@ -14,38 +14,39 @@ function MyAccountScreen(props) {
           source={require("../assets/man.png")}
           style={styles.avatar}
         />
-        <View style={styles.headerInfo}>
-          <AppText>Javier</AppText>
-          <AppText color="darkgray">javier@email.com</AppText>
-        </View>
+
+        <AppText>Javier</AppText>
+        <AppText color="darkgray">javier@email.com</AppText>
       </View>
-      <View style={styles.bottom}>
-        <ScreenTitle>Cuenta</ScreenTitle>
-        <View style={styles.creditBlock}>
-          <AppText marginBottom={15}>
-            Nombre de usuario {"\n"}javi_el_crack_94
-          </AppText>
-          <LinkText>Cambiar</LinkText>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.bottom}>
+          <View style={styles.accBlock}>
+            <SectionTitle marginBottom={10}>Datos de la cuenta</SectionTitle>
+            <View style={styles.creditBlock}>
+              <AppText marginBottom={15}>
+                Nombre de usuario {"\n"}javi_el_crack_94
+              </AppText>
+              <LinkText>Cambiar</LinkText>
+            </View>
+            <View style={styles.creditBlock}>
+              <AppText marginBottom={15}>Email {"\n"}javier@email.com</AppText>
+              <LinkText>Cambiar</LinkText>
+            </View>
+            <View style={styles.creditBlock}>
+              <AppText marginBottom={15}>Contraseña {"\n"}**********</AppText>
+              <LinkText>Cambiar</LinkText>
+            </View>
+          </View>
+          <SectionTitle marginBottom={10}>Eliminar cuenta</SectionTitle>
+          <View style={styles.creditBlock}>
+            <AppText marginBottom={15}>
+              ¿Estas seguro de que deseas eliminar tu cuenta? Toda la
+              información se borrará.
+            </AppText>
+            <LinkText color="danger">Si, borrar</LinkText>
+          </View>
         </View>
-        <View style={styles.creditBlock}>
-          <AppText marginBottom={15}>
-            Email {"\n"}javi_el_crack_94@email.com
-          </AppText>
-          <LinkText>Cambiar</LinkText>
-        </View>
-        <View style={styles.creditBlock}>
-          <AppText marginBottom={15}>Contraseña {"\n"}**********</AppText>
-          <LinkText>Cambiar</LinkText>
-        </View>
-        <ScreenTitle>Eliminar cuenta</ScreenTitle>
-        <View style={styles.creditBlock}>
-          <AppText marginBottom={15}>
-            ¿Estas seguro de que deseas eliminar tu cuenta? Toda la información
-            se borrará.
-          </AppText>
-          <LinkText color="danger">Si, borrar</LinkText>
-        </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }
@@ -53,22 +54,25 @@ function MyAccountScreen(props) {
 const styles = StyleSheet.create({
   bg: {
     padding: 20,
+    paddingBottom: 0,
     flex: 1,
   },
   header: {
     width: "100%",
-    height: 100,
-    flexDirection: "row",
     alignItems: "center",
+    marginBottom: 15,
   },
   avatar: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    marginRight: 15,
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    marginBottom: 10,
   },
   bottom: {
     flex: 1,
+  },
+  accBlock: {
+    marginBottom: 20,
   },
   creditBlock: {
     marginVertical: 10,

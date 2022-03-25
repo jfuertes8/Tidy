@@ -7,8 +7,9 @@ import AppText from "../texts/AppText";
 import { Spartan_500Medium } from "@expo-google-fonts/spartan";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
+import ErrorMessage from "./ErrorMessage";
 
-function AppFormField({ placeholder, text, icon }) {
+function AppFormField({ icon, text, warning, visible, ...otherProps }) {
   let [fontsLoaded, error] = useFonts({
     Spartan_500Medium,
   });
@@ -26,7 +27,10 @@ function AppFormField({ placeholder, text, icon }) {
         <AppText>{text}</AppText>
       </View>
       <View style={styles.formInputField}>
-        <TextInput placeholder={placeholder} style={styles.input}></TextInput>
+        <TextInput {...otherProps} style={styles.input}></TextInput>
+      </View>
+      <View style={styles.warningMessage}>
+        {warning && visible && <ErrorMessage warning={warning} />}
       </View>
     </>
   );
@@ -38,7 +42,6 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: colors.gray,
     marginTop: 5,
-    marginBottom: 18,
     borderRadius: 8,
     justifyContent: "center",
     alignItems: "flex-start",
@@ -56,6 +59,9 @@ const styles = StyleSheet.create({
   input: {
     fontFamily: "Spartan_500Medium",
     alignSelf: "stretch",
+  },
+  warningMessage: {
+    marginBottom: 15,
   },
 });
 

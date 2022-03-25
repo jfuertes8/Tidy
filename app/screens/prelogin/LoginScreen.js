@@ -1,5 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text, ImageBackground } from "react-native";
+import { Formik } from "formik";
+import * as yup from "yup";
 
 import AppButton from "../../components/AppButton";
 import AppFormField from "../../components/forms/AppFormField";
@@ -12,7 +14,13 @@ import LinkText from "../../components/texts/LinkText";
 import ScreenTitle from "../../components/texts/ScreenTitle";
 import Logo from "../../components/texts/Logo";
 
+const validationSchema = yup.object().shape({
+  email: yup.string().required().email().label("Email"),
+  password: yup.string().required().label("Password"),
+});
+
 function LoginScreen({ navigation }) {
+  //Hook for custom Google Font
   let [fontsLoaded, error] = useFonts({
     PlayfairDisplay_600SemiBold,
   });
@@ -32,17 +40,56 @@ function LoginScreen({ navigation }) {
       </ImageBackground>
       <View style={styles.loginContainer}>
         <ScreenTitle marginBottom={20}>Login</ScreenTitle>
-        <AppFormField
-          placeholder="Nombre de usuario"
-          text="Nombre de usuario o email"
-          icon="account"
-        />
-        <AppFormField placeholder="Contraseña" text="Contraseña" icon="key" />
-        <AppButton
-          title="Entrar"
-          bgColor="primary"
-          onPress={() => navigation.navigate("LoginOk")}
-        />
+
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          onSubmit={(values) => console.log(values)}
+          validationSchema={validationSchema}
+        >
+          {({
+            handleChange,
+            handleSubmit,
+            errors,
+            setFieldTouched,
+            touched,
+          }) => (
+            <>
+              <AppFormField
+                text="Email"
+                icon="account"
+                placeholder="Email"
+                autoCapitalize="none"
+                autoCorrect={false}
+                keyboardType="email-address"
+                textContentType="emailAddress"
+                onChangeText={handleChange("email")}
+                onBlur={() => setFieldTouched("email")}
+                warning={errors.email}
+                visible={touched.email}
+              />
+              <AppFormField
+                text="Contraseña"
+                icon="key"
+                placeholder="Contraseña"
+                autoCapitalize="none"
+                autoCorrect={false}
+                textContentType="password"
+                secureTextEntry
+                onChangeText={handleChange("password")}
+                onBlur={() => setFieldTouched("password")}
+                warning={errors.password}
+                visible={touched.password}
+              />
+              <AppButton
+                title="Entrar"
+                bgColor="primary"
+                //onPress={() => navigation.navigate("LoginOk")}
+                onPress={handleSubmit}
+              />
+            </>
+          )}
+        </Formik>
+
         <View style={styles.newAccContainer}>
           <AppText>¿No tienes cuenta aún?</AppText>
           <LinkText
@@ -60,6 +107,7 @@ function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
   bg: {
     flex: 1,
+    backgroundColor: colors.black,
   },
   top: {
     flex: 1,
@@ -85,6 +133,7 @@ const styles = StyleSheet.create({
   },
   newAccContainer: {
     flexDirection: "row",
+    alignItems: "center",
     marginTop: 25,
   },
 });

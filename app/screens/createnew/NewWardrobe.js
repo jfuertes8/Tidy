@@ -1,29 +1,65 @@
 import React from "react";
 import { StyleSheet, View, Image } from "react-native";
+import { Formik } from "formik";
+import * as yup from "yup";
+
 import AppButton from "../../components/AppButton";
 import AppFormField from "../../components/forms/AppFormField";
-
 import colors from "../../config/colors";
+
+const validationSchema = yup.object().shape({
+  wardrobeName: yup.string().required().label("Wardrobe Name"),
+  location: yup.string().required().label("Location"),
+});
 
 function NewWardrobe(props) {
   return (
     <>
       <View style={styles.bg}>
         <View style={styles.formFields}>
-          <AppFormField
-            placeholder="p. ej: Armario de casa..."
-            text="Nombre del armario"
-          />
-          <AppFormField
-            placeholder="p. ej: Madrid..."
-            text="Ubicación del armario"
-          />
-          <Image
-            source={require("../../assets/reading.jpg")}
-            style={styles.image}
-          />
+          <Formik
+            initialValues={{ wardrobeName: "", location: "" }}
+            onSubmit={(values) => console.log(values)}
+            validationSchema={validationSchema}
+          >
+            {({
+              handleChange,
+              handleSubmit,
+              errors,
+              setFieldTouched,
+              touched,
+            }) => (
+              <>
+                <AppFormField
+                  text="Nombre del armario"
+                  placeholder="p. ej: Armario de casa..."
+                  onChangeText={handleChange("wardrobeName")}
+                  onBlur={() => setFieldTouched("wardrobeName")}
+                  warning={errors.wardrobeName}
+                  visible={touched.wardrobeName}
+                />
+                <AppFormField
+                  text="Ubicación del armario"
+                  placeholder="p. ej: Madrid..."
+                  onChangeText={handleChange("location")}
+                  onBlur={() => setFieldTouched("location")}
+                  warning={errors.location}
+                  visible={touched.location}
+                />
+                <Image
+                  source={require("../../assets/reading.jpg")}
+                  style={styles.image}
+                />
+                <AppButton
+                  bgColor="primary"
+                  bdColor="primary"
+                  title="Crear armario"
+                  onPress={handleSubmit}
+                />
+              </>
+            )}
+          </Formik>
         </View>
-        <AppButton bgColor="primary" bdColor="primary" title="Crear armario" />
       </View>
     </>
   );
