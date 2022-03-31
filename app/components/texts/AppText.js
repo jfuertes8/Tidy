@@ -6,7 +6,7 @@ import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import colors from "../../config/colors";
 
-function AppText({ children, marginBottom, color = "black", fontSize = 14 }) {
+function AppText({ children, marginBottom, color = "black", fontSize = 12 }) {
   let [fontsLoaded, error] = useFonts({
     Spartan_500Medium,
   });

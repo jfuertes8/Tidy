@@ -5,7 +5,7 @@ import { Spartan_600SemiBold } from "@expo-google-fonts/spartan";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 
-function SectionTitle({ children, marginBottom = 20 }) {
+function SectionTitle({ children, marginBottom = 18 }) {
   let [fontsLoaded, error] = useFonts({
     Spartan_600SemiBold,
   });

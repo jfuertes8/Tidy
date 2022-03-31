@@ -7,7 +7,7 @@ import TabNavigator from "./app/navigation/TabNavigator";
 export default function App() {
   return (
     <NavigationContainer theme={navigationTheme}>
-      <TabNavigator />
+      <AuthNavigator />
     </NavigationContainer>
   );
 }

@@ -28,6 +28,7 @@ function LinkText({ children, onPress, marginLeft, color = "primary" }) {
 
 const styles = StyleSheet.create({
   text: {
+    fontSize: 12,
     color: colors.primary,
     fontFamily: "Spartan_700Bold",
   },

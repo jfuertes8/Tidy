@@ -29,7 +29,7 @@ function ScreenTitle({ children, marginBottom, color = "black" }) {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 25,
+    fontSize: 22,
     fontFamily: "Spartan_500Medium",
   },
 });
