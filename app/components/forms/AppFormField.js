@@ -6,17 +6,12 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppText from "../texts/AppText";
 import { Spartan_500Medium } from "@expo-google-fonts/spartan";
 import { useFonts } from "expo-font";
-import AppLoading from "expo-app-loading";
 import ErrorMessage from "./ErrorMessage";
 
 function AppFormField({ icon, text, warning, visible, ...otherProps }) {
   let [fontsLoaded, error] = useFonts({
     Spartan_500Medium,
   });
-
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
 
   return (
     <>

@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import { FlatList, View, StyleSheet, Image, Alert } from "react-native";
 
-import ListItemSeparator from "../../components/ListItemSeparator";
-import CategorySelector from "../../components/CategorySelector";
+import ListItemSeparator from "../../components/other/ListItemSeparator";
+import CategorySelector from "../../components/other/CategorySelector";
 import colors from "../../config/colors";
 import ScreenTitle from "../../components/texts/ScreenTitle";
 import AppText from "../../components/texts/AppText";
 import SectionTitle from "../../components/texts/SectionTitle";
-import WardrobeOption from "../../components/WardrobeOption";
-import Animated from "react-native-reanimated";
-import BottomSheet from "reanimated-bottom-sheet";
-import AppButton from "../../components/AppButton";
-import EmptyState from "../../components/EmptyState";
+import AppButton from "../../components/other/AppButton";
+import EmptyState from "../../components/other/EmptyState";
 
 const categoriesList = [
   {
@@ -63,27 +60,7 @@ function WardrobeCategoryScreen({ navigation, route }) {
           />
           <ScreenTitle marginBottom={10}>{route.params?.title}</ScreenTitle>
           <AppText marginBottom={20}>{route.params?.location}</AppText>
-          <View style={styles.options}>
-            <WardrobeOption
-              icon="trash-can-outline"
-              text="Eliminar"
-              onPress={() =>
-                Alert.alert(
-                  "¿Estas seguro?",
-                  "Esta acción no tiene vuelta atrás, y perderás toda la ropa introducida.",
-                  [
-                    {
-                      text: "Eliminar",
-                      onPress: () => console.log("Eliminar"),
-                    },
-                    { text: "Volver", onPress: () => console.log("Volver") },
-                  ]
-                )
-              }
-            />
-            <WardrobeOption icon="square-edit-outline" text="Editar" />
-            <WardrobeOption icon="plus" text="Nueva" />
-          </View>
+          <View style={styles.options}></View>
         </View>
         <View style={styles.sectionTitle}>
           <SectionTitle>Tu ropa en este armario</SectionTitle>

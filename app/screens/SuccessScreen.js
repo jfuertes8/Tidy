@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 
-import AppButton from "../components/AppButton";
+import AppButton from "../components/other/AppButton";
 import colors from "../config/colors";
 import AppText from "../components/texts/AppText";
 import ScreenTitle from "../components/texts/ScreenTitle";

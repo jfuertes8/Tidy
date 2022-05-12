@@ -3,12 +3,11 @@ import { View, StyleSheet, Text, ImageBackground } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-import AppButton from "../../components/AppButton";
+import AppButton from "../../components/other/AppButton";
 import AppFormField from "../../components/forms/AppFormField";
 import colors from "../../config/colors";
 import { PlayfairDisplay_600SemiBold } from "@expo-google-fonts/playfair-display";
 import { useFonts } from "expo-font";
-import AppLoading from "expo-app-loading";
 import AppText from "../../components/texts/AppText";
 import LinkText from "../../components/texts/LinkText";
 import ScreenTitle from "../../components/texts/ScreenTitle";
@@ -24,10 +23,6 @@ function LoginScreen({ navigation }) {
   let [fontsLoaded, error] = useFonts({
     PlayfairDisplay_600SemiBold,
   });
-
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
 
   return (
     <View style={styles.bg}>
@@ -83,8 +78,8 @@ function LoginScreen({ navigation }) {
               <AppButton
                 title="Entrar"
                 bgColor="primary"
-                //onPress={() => navigation.navigate("LoginOk")}
-                onPress={handleSubmit}
+                onPress={() => navigation.navigate("LoginOk")}
+                //onPress={handleSubmit}
               />
             </>
           )}

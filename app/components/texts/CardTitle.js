@@ -1,26 +1,21 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
 
-import { Spartan_500Medium } from "@expo-google-fonts/spartan";
+import { Spartan_600SemiBold } from "@expo-google-fonts/spartan";
 import { useFonts } from "expo-font";
-import AppLoading from "expo-app-loading";
 
 function CardTitle({ children }) {
   let [fontsLoaded, error] = useFonts({
-    Spartan_500Medium,
+    Spartan_600SemiBold,
   });
-
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
 
   return <Text style={styles.text}>{children}</Text>;
 }
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: "Spartan_500Medium",
-    fontSize: 16,
+    fontFamily: "Spartan_600SemiBold",
+    fontSize: 15,
     lineHeight: 24,
   },
 });

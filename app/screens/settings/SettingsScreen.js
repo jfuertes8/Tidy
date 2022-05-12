@@ -1,12 +1,13 @@
 import React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
 
-import Screen from "../components/Screen";
-import Logo from "../components/texts/Logo";
-import ScreenTitle from "../components/texts/ScreenTitle";
-import ListItemSeparator from "../components/ListItemSeparator";
-import CategorySelector from "../components/CategorySelector";
-import AppText from "../components/texts/AppText";
+import Screen from "../../components/other/Screen";
+import Logo from "../../components/texts/Logo";
+import ScreenTitle from "../../components/texts/ScreenTitle";
+import ListItemSeparator from "../../components/other/ListItemSeparator";
+import CategorySelector from "../../components/other/CategorySelector";
+import AppText from "../../components/texts/AppText";
+import LandingHeader from "../../components/other/LandingHeader";
 
 const settingsOptions = [
   {
@@ -33,9 +34,8 @@ function SettingsScreen({ navigation }) {
   return (
     <Screen>
       <View style={styles.bg}>
-        <Logo marginVertical={10} />
+        <LandingHeader title="Ajustes" />
         <View style={styles.body}>
-          <ScreenTitle marginBottom={15}>Ajustes</ScreenTitle>
           <FlatList
             data={settingsOptions}
             keyExtractor={(card) => card.id.toString()}

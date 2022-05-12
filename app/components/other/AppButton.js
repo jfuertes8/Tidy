@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 
-import colors from "../config/colors";
-import ButtonText from "./texts/ButtonText";
+import colors from "../../config/colors";
+import ButtonText from "../texts/ButtonText";
 
 function AppButton({ title, bgColor, onPress }) {
   return (

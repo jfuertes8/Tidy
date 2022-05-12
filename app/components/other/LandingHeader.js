@@ -2,22 +2,28 @@ import React from "react";
 import { View, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import colors from "../config/colors";
-import Logo from "./texts/Logo";
-import ScreenTitle from "./texts/ScreenTitle";
+import colors from "../../config/colors";
+import Logo from "../texts/Logo";
+import ScreenTitle from "../texts/ScreenTitle";
 
-function LandingHeader({ onPress }) {
+function LandingHeader({ onPress, title, icon }) {
   return (
     <View style={styles.landingHeader}>
       <View style={styles.headerLeft}>
         <Logo marginVertical={10} />
-        <ScreenTitle marginBottom={20}>Tus armarios</ScreenTitle>
+        <ScreenTitle marginBottom={20}>{title}</ScreenTitle>
       </View>
-      <TouchableWithoutFeedback onPress={onPress}>
-        <View style={styles.roundNewButton}>
-          <MaterialCommunityIcons name="plus" size={24} color={colors.white} />
-        </View>
-      </TouchableWithoutFeedback>
+      {icon && (
+        <TouchableWithoutFeedback onPress={onPress}>
+          <View style={styles.roundNewButton}>
+            <MaterialCommunityIcons
+              name="plus"
+              size={24}
+              color={colors.white}
+            />
+          </View>
+        </TouchableWithoutFeedback>
+      )}
     </View>
   );
 }
@@ -37,7 +43,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 20,
   },
 });
 

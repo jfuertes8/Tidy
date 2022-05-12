@@ -1,9 +1,9 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import CreditScreen from "../screens/CreditScreen";
-import SettingsScreen from "../screens/SettingsScreen";
-import MyAccountScreen from "../screens/MyAccountScreen";
+import CreditScreen from "../screens/settings/CreditScreen";
+import SettingsScreen from "../screens/settings/SettingsScreen";
+import MyAccountScreen from "../screens/settings/MyAccountScreen";
 import colors from "../config/colors";
 
 const Stack = createNativeStackNavigator();

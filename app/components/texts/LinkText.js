@@ -3,17 +3,12 @@ import { Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 
 import { Spartan_700Bold } from "@expo-google-fonts/spartan";
 import { useFonts } from "expo-font";
-import AppLoading from "expo-app-loading";
 import colors from "../../config/colors";
 
 function LinkText({ children, onPress, marginLeft, color = "primary" }) {
   let [fontsLoaded, error] = useFonts({
     Spartan_700Bold,
   });
-
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>

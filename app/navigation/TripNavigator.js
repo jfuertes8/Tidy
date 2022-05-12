@@ -1,8 +1,8 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import TripsLandingScreen from "../screens/TripsLandingScreen";
-import TripDetailScreen from "../screens/TripDetailScreen";
+import TripsLandingScreen from "../screens/trips/TripsLandingScreen";
+import TripDetailScreen from "../screens/trips/TripDetailScreen";
 import colors from "../config/colors";
 
 const Stack = createNativeStackNavigator();

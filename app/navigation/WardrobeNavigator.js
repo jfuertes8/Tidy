@@ -5,6 +5,7 @@ import WardrobeLandingScreen from "../screens/wardrobes/WardrobeLandingScreen";
 import WardrobeCategoryScreen from "../screens/wardrobes/WardrobeCategoryScreen";
 import CategoryDetailScreen from "../screens/CategoryDetailScreen";
 import colors from "../config/colors";
+import NewWardrobeScreen from "../screens/wardrobes/NewWardrobeScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,17 @@ function WardrobeNavigator({ navigation, route }) {
         component={CategoryDetailScreen}
         options={{
           title: "Detalle de la categoría",
+        }}
+      />
+      <Stack.Screen
+        name="NewWardrobe"
+        component={NewWardrobeScreen}
+        options={{
+          title: " ",
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: colors.gray,
+          },
         }}
       />
     </Stack.Navigator>

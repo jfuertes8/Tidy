@@ -10,10 +10,6 @@ function SectionTitle({ children, marginBottom = 18 }) {
     Spartan_600SemiBold,
   });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
-
   return (
     <Text style={[styles.text, { marginBottom: marginBottom }]}>
       {children}

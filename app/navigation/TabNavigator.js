@@ -4,7 +4,6 @@ import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
 import WardrobeNavigator from "../navigation/WardrobeNavigator";
 import TripNavigator from "../navigation/TripNavigator";
-import CreateNewNavigator from "../navigation/CreateNewNavigator";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import SettingsNavigator from "./SettingsNavigator";
@@ -22,7 +21,7 @@ const TabNavigator = () => (
       name="Home"
       component={WardrobeNavigator}
       options={({ route }) => ({
-        tabBarLabel: () => <AppText fontSize={10}>Armarios</AppText>,
+        tabBarShowLabel: false,
         tabBarStyle: { display: getTabBarVisibility(route) },
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons
@@ -37,7 +36,7 @@ const TabNavigator = () => (
       name="Trips"
       component={TripNavigator}
       options={({ route }) => ({
-        tabBarLabel: () => <AppText fontSize={10}>Viajes</AppText>,
+        tabBarShowLabel: false,
         tabBarStyle: { display: getTabBarVisibility(route) },
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons
@@ -52,25 +51,10 @@ const TabNavigator = () => (
       name="Settings"
       component={SettingsNavigator}
       options={({ route }) => ({
-        tabBarLabel: () => <AppText fontSize={10}>Ajustes</AppText>,
+        tabBarShowLabel: false,
         tabBarStyle: { display: getTabBarVisibility(route) },
         tabBarIcon: ({ color, size }) => (
           <Ionicons name="settings-outline" size={size} color={color} />
-        ),
-      })}
-    />
-    <Tab.Screen
-      name="New"
-      component={CreateNewNavigator}
-      options={({ route }) => ({
-        tabBarLabel: () => <AppText fontSize={10}>Nuevo</AppText>,
-        tabBarStyle: { display: getTabBarVisibility(route) },
-        tabBarIcon: ({ color, size }) => (
-          <MaterialCommunityIcons
-            name="plus-circle-outline"
-            size={size}
-            color={color}
-          />
         ),
       })}
     />

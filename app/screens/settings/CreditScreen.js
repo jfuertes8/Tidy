@@ -2,9 +2,9 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import AppText from "../components/texts/AppText";
-import LinkText from "../components/texts/LinkText";
-import colors from "../config/colors";
+import AppText from "../../components/texts/AppText";
+import LinkText from "../../components/texts/LinkText";
+import colors from "../../config/colors";
 
 function CreditScreen(props) {
   return (

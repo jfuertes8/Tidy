@@ -7,10 +7,10 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
-import colors from "../config/colors";
+import colors from "../../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import AppText from "./texts/AppText";
-import CardTitle from "./texts/CardTitle";
+import AppText from "../texts/AppText";
+import CardTitle from "../texts/CardTitle";
 
 function CategorySelector({
   title,

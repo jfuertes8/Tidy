@@ -4,7 +4,7 @@ import AppFormField from "../../components/forms/AppFormField";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-import AppButton from "../../components/AppButton";
+import AppButton from "../../components/other/AppButton";
 import colors from "../../config/colors";
 import ScreenTitle from "../../components/texts/ScreenTitle";
 import Logo from "../../components/texts/Logo";

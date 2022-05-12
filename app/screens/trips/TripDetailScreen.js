@@ -1,44 +1,44 @@
 import React from "react";
 import { View, StyleSheet, FlatList, Image } from "react-native";
 
-import colors from "../config/colors";
+import colors from "../../config/colors";
 import { Ionicons } from "@expo/vector-icons";
-import CategorySelector from "../components/CategorySelector";
-import ListItemSeparator from "../components/ListItemSeparator";
-import SectionTitle from "../components/texts/SectionTitle";
-import ScreenTitle from "../components/texts/ScreenTitle";
-import AppText from "../components/texts/AppText";
+import CategorySelector from "../../components/other/CategorySelector";
+import ListItemSeparator from "../../components/other/ListItemSeparator";
+import SectionTitle from "../../components/texts/SectionTitle";
+import ScreenTitle from "../../components/texts/ScreenTitle";
+import AppText from "../../components/texts/AppText";
 
 const categoriesList = [
   {
     id: 1,
     title: "Camisetas",
     subtitle: "4 elementos",
-    image: require("../assets/tshirticon.png"),
+    image: require("../../assets/tshirticon.png"),
   },
   {
     id: 2,
     title: "Pantalones",
     subtitle: "3 elementos",
-    image: require("../assets/jeans.png"),
+    image: require("../../assets/jeans.png"),
   },
   {
     id: 3,
     title: "Calcetines",
     subtitle: "1 elemento",
-    image: require("../assets/socks.png"),
+    image: require("../../assets/socks.png"),
   },
   {
     id: 4,
     title: "Bañadores",
     subtitle: "6 elementos",
-    image: require("../assets/shorts.png"),
+    image: require("../../assets/shorts.png"),
   },
   {
     id: 5,
     title: "Camisas",
     subtitle: "3 elementos",
-    image: require("../assets/shirt.png"),
+    image: require("../../assets/shirt.png"),
   },
 ];
 
@@ -48,7 +48,10 @@ function TripDetailScreen({ route }) {
   return (
     <View style={styles.bg}>
       <View style={styles.tripTicketContainer}>
-        <Image source={require("../assets/lugagge.png")} style={styles.image} />
+        <Image
+          source={require("../../assets/lugagge.png")}
+          style={styles.image}
+        />
         <View style={styles.tripTicketInfo}>
           <AppText style={styles.dates}>{trip.date}</AppText>
           <View style={styles.cities}>

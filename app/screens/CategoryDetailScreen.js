@@ -1,8 +1,8 @@
 import React from "react";
 import { View, FlatList, StyleSheet, Image } from "react-native";
 
-import ListItemSeparator from "../components/ListItemSeparator";
-import CategorySelector from "../components/CategorySelector";
+import ListItemSeparator from "../components/other/ListItemSeparator";
+import CategorySelector from "../components/other/CategorySelector";
 import ScreenTitle from "../components/texts/ScreenTitle";
 import colors from "../config/colors";
 import ImageBackground from "react-native/Libraries/Image/ImageBackground";

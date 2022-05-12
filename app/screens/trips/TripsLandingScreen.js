@@ -8,14 +8,14 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-import AppText from "../components/texts/AppText";
-import CategorySelector from "../components/CategorySelector";
-import colors from "../config/colors";
-import ListItemSeparator from "../components/ListItemSeparator";
-import Logo from "../components/texts/Logo";
-import Screen from "../components/Screen";
-import ScreenTitle from "../components/texts/ScreenTitle";
-import SectionTitle from "../components/texts/SectionTitle";
+import AppText from "../../components/texts/AppText";
+import CategorySelector from "../../components/other/CategorySelector";
+import colors from "../../config/colors";
+import ListItemSeparator from "../../components/other/ListItemSeparator";
+import Screen from "../../components/other/Screen";
+import ScreenTitle from "../../components/texts/ScreenTitle";
+import SectionTitle from "../../components/texts/SectionTitle";
+import LandingHeader from "../../components/other/LandingHeader";
 
 /*
         <FlatList
@@ -99,16 +99,14 @@ function WardrobeLandingScreen({ navigation }) {
       <Screen>
         <View style={styles.bg}>
           <View style={styles.topSection}>
-            <Logo marginVertical={10} />
-            <ScreenTitle marginBottom={5}>Tus viajes</ScreenTitle>
-            <AppText marginBottom={30}>¡Hola Javier!</AppText>
+            <LandingHeader title="Tus Viajes" icon />
             <SectionTitle>Tu viaje activo</SectionTitle>
             <TouchableWithoutFeedback
               onPress={() => navigation.navigate("TripDetail", activeTrip)}
             >
               <View style={styles.activeTripCard}>
                 <Image
-                  source={require("../assets/lugagge.png")}
+                  source={require("../../assets/lugagge.png")}
                   style={styles.activeImage}
                 />
                 <View style={styles.tripData}>

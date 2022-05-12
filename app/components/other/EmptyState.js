@@ -1,8 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 
-import colors from "../config/colors";
-import AppText from "./texts/AppText";
+import colors from "../../config/colors";
+import AppText from "../texts/AppText";
 import AppButton from "./AppButton";
 
 function EmptyState({ ctaText, onPress }) {
@@ -11,7 +11,7 @@ function EmptyState({ ctaText, onPress }) {
       <View style={styles.whiteBox}>
         <View style={styles.emptyStateContent}>
           <Image
-            source={require("../assets/empty-state.png")}
+            source={require("../../assets/empty-state.png")}
             style={styles.emptyStateImage}
           />
           <AppText>

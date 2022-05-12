@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, View, Image, FlatList } from "react-native";
 
-import Card from "../../components/Card";
+import Card from "../../components/other/Card";
 import colors from "../../config/colors";
-import Screen from "../../components/Screen";
-import LandingHeader from "../../components/LandingHeader";
-import EmptyState from "../../components/EmptyState";
+import Screen from "../../components/other/Screen";
+import LandingHeader from "../../components/other/LandingHeader";
+import EmptyState from "../../components/other/EmptyState";
 
 const cardData = [
   {
@@ -25,9 +25,12 @@ function WardrobeLandingScreen({ navigation }) {
     <>
       <Screen>
         <View style={styles.bg}>
-          <LandingHeader />
+          <LandingHeader
+            title="Tus Armarios"
+            icon
+            onPress={() => navigation.navigate("NewWardrobe")}
+          />
           <FlatList
-            horizontal={true}
             data={cardData}
             keyExtractor={(card) => card.id.toString()}
             showsHorizontalScrollIndicator={false}
@@ -59,7 +62,6 @@ function WardrobeLandingScreen({ navigation }) {
 const styles = StyleSheet.create({
   bg: {
     padding: 20,
-    paddingRight: 0,
     backgroundColor: colors.gray,
     flex: 1,
   },

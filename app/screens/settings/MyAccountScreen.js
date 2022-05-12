@@ -1,17 +1,17 @@
 import React from "react";
 import { View, ImageBackground, StyleSheet, ScrollView } from "react-native";
 
-import AppText from "../components/texts/AppText";
-import LinkText from "../components/texts/LinkText";
-import SectionTitle from "../components/texts/SectionTitle";
-import colors from "../config/colors";
+import AppText from "../../components/texts/AppText";
+import LinkText from "../../components/texts/LinkText";
+import SectionTitle from "../../components/texts/SectionTitle";
+import colors from "../../config/colors";
 
 function MyAccountScreen(props) {
   return (
     <View style={styles.bg}>
       <View style={styles.header}>
         <ImageBackground
-          source={require("../assets/man.png")}
+          source={require("../../assets/man.png")}
           style={styles.avatar}
         />
 
