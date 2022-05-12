@@ -2,7 +2,6 @@ import React from "react";
 import {
   StyleSheet,
   View,
-  Text,
   Image,
   TouchableWithoutFeedback,
 } from "react-native";
@@ -23,6 +22,16 @@ function Card({ title, subtitle, image, onPress }) {
             <MaterialCommunityIcons name="map-marker" style={styles.icon} />
             <AppText color="darkgray">{subtitle}</AppText>
           </View>
+          <View style={styles.options}>
+            <TouchableWithoutFeedback>
+              <MaterialCommunityIcons
+                name="trash-can-outline"
+                size={25}
+                style={styles.deleteIcon}
+              />
+            </TouchableWithoutFeedback>
+            <MaterialCommunityIcons name="square-edit-outline" size={25} />
+          </View>
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -31,18 +40,15 @@ function Card({ title, subtitle, image, onPress }) {
 
 const styles = StyleSheet.create({
   card: {
-    width: "100%",
-    height: 100,
+    width: 200,
     backgroundColor: colors.white,
     borderRadius: 8,
-    marginBottom: 20,
-    flexDirection: "row",
-    alignItems: "center",
-    paddingLeft: 15,
+    marginRight: 20,
+    overflow: "hidden",
   },
   image: {
-    height: 75,
-    width: 75,
+    height: 110,
+    width: "100%",
   },
   cardInfoContainer: {
     padding: 10,
@@ -51,9 +57,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginTop: 5,
+    marginBottom: 15,
   },
   icon: {
     marginRight: 5,
+  },
+  options: {
+    flexDirection: "row",
+  },
+  deleteIcon: {
+    marginRight: 20,
   },
 });
 

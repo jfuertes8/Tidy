@@ -8,13 +8,13 @@ import CreateNewNavigator from "../navigation/CreateNewNavigator";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import SettingsNavigator from "./SettingsNavigator";
+import AppText from "../components/texts/AppText";
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => (
   <Tab.Navigator
     screenOptions={{
-      tabBarShowLabel: false,
       headerShown: false,
     }}
   >
@@ -22,6 +22,7 @@ const TabNavigator = () => (
       name="Home"
       component={WardrobeNavigator}
       options={({ route }) => ({
+        tabBarLabel: () => <AppText fontSize={10}>Armarios</AppText>,
         tabBarStyle: { display: getTabBarVisibility(route) },
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons
@@ -36,6 +37,7 @@ const TabNavigator = () => (
       name="Trips"
       component={TripNavigator}
       options={({ route }) => ({
+        tabBarLabel: () => <AppText fontSize={10}>Viajes</AppText>,
         tabBarStyle: { display: getTabBarVisibility(route) },
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons
@@ -50,6 +52,7 @@ const TabNavigator = () => (
       name="Settings"
       component={SettingsNavigator}
       options={({ route }) => ({
+        tabBarLabel: () => <AppText fontSize={10}>Ajustes</AppText>,
         tabBarStyle: { display: getTabBarVisibility(route) },
         tabBarIcon: ({ color, size }) => (
           <Ionicons name="settings-outline" size={size} color={color} />
@@ -60,6 +63,7 @@ const TabNavigator = () => (
       name="New"
       component={CreateNewNavigator}
       options={({ route }) => ({
+        tabBarLabel: () => <AppText fontSize={10}>Nuevo</AppText>,
         tabBarStyle: { display: getTabBarVisibility(route) },
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons

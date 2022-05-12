@@ -1,11 +1,17 @@
-import React from "react";
-import { FlatList, View, StyleSheet, Image } from "react-native";
+import React, { useState } from "react";
+import { FlatList, View, StyleSheet, Image, Alert } from "react-native";
 
 import ListItemSeparator from "../../components/ListItemSeparator";
 import CategorySelector from "../../components/CategorySelector";
 import colors from "../../config/colors";
 import ScreenTitle from "../../components/texts/ScreenTitle";
 import AppText from "../../components/texts/AppText";
+import SectionTitle from "../../components/texts/SectionTitle";
+import WardrobeOption from "../../components/WardrobeOption";
+import Animated from "react-native-reanimated";
+import BottomSheet from "reanimated-bottom-sheet";
+import AppButton from "../../components/AppButton";
+import EmptyState from "../../components/EmptyState";
 
 const categoriesList = [
   {
@@ -52,12 +58,42 @@ function WardrobeCategoryScreen({ navigation, route }) {
       <View style={styles.bg}>
         <View style={styles.top}>
           <Image
-            source={require("../../assets/wardrobeimg.png")}
+            source={require("../../assets/category-bg.png")}
             style={styles.image}
           />
-          <ScreenTitle>{route.params?.title}</ScreenTitle>
-          <AppText>{route.params?.location}</AppText>
+          <ScreenTitle marginBottom={10}>{route.params?.title}</ScreenTitle>
+          <AppText marginBottom={20}>{route.params?.location}</AppText>
+          <View style={styles.options}>
+            <WardrobeOption
+              icon="trash-can-outline"
+              text="Eliminar"
+              onPress={() =>
+                Alert.alert(
+                  "¿Estas seguro?",
+                  "Esta acción no tiene vuelta atrás, y perderás toda la ropa introducida.",
+                  [
+                    {
+                      text: "Eliminar",
+                      onPress: () => console.log("Eliminar"),
+                    },
+                    { text: "Volver", onPress: () => console.log("Volver") },
+                  ]
+                )
+              }
+            />
+            <WardrobeOption icon="square-edit-outline" text="Editar" />
+            <WardrobeOption icon="plus" text="Nueva" />
+          </View>
         </View>
+        <View style={styles.sectionTitle}>
+          <SectionTitle>Tu ropa en este armario</SectionTitle>
+        </View>
+        {/*<View style={{ flex: 1, paddingHorizontal: 20 }}>
+          <EmptyState
+            ctaText="Nueva Ropa"
+            onPress={() => console.log("new clothe tapped")}
+          />
+          </View>*/}
         <FlatList
           data={categoriesList}
           keyExtractor={(message) => message.id.toString()}
@@ -88,8 +124,17 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   image: {
-    width: 170,
-    height: 170,
+    width: 140,
+    height: 140,
+    borderRadius: 70,
+    marginBottom: 20,
+  },
+  options: {
+    flexDirection: "row",
+    marginVertical: 5,
+  },
+  sectionTitle: {
+    marginLeft: 20,
   },
 });
 

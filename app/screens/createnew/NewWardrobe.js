@@ -30,26 +30,24 @@ function NewWardrobe(props) {
               touched,
             }) => (
               <>
-                <AppFormField
-                  text="Nombre del armario"
-                  placeholder="p. ej: Armario de casa..."
-                  onChangeText={handleChange("wardrobeName")}
-                  onBlur={() => setFieldTouched("wardrobeName")}
-                  warning={errors.wardrobeName}
-                  visible={touched.wardrobeName}
-                />
-                <AppFormField
-                  text="Ubicación del armario"
-                  placeholder="p. ej: Madrid..."
-                  onChangeText={handleChange("location")}
-                  onBlur={() => setFieldTouched("location")}
-                  warning={errors.location}
-                  visible={touched.location}
-                />
-                <Image
-                  source={require("../../assets/reading.jpg")}
-                  style={styles.image}
-                />
+                <View style={styles.formFields}>
+                  <AppFormField
+                    text="Nombre del armario"
+                    placeholder="p. ej: Armario de casa..."
+                    onChangeText={handleChange("wardrobeName")}
+                    onBlur={() => setFieldTouched("wardrobeName")}
+                    warning={errors.wardrobeName}
+                    visible={touched.wardrobeName}
+                  />
+                  <AppFormField
+                    text="Ubicación del armario"
+                    placeholder="p. ej: Madrid..."
+                    onChangeText={handleChange("location")}
+                    onBlur={() => setFieldTouched("location")}
+                    warning={errors.location}
+                    visible={touched.location}
+                  />
+                </View>
                 <AppButton
                   bgColor="primary"
                   bdColor="primary"

@@ -6,16 +6,16 @@ import {
   FlatList,
   TouchableWithoutFeedback,
 } from "react-native";
-
-import CategorySelector from "../components/CategorySelector";
-import ListItemSeparator from "../components/ListItemSeparator";
-import colors from "../config/colors";
 import { Ionicons } from "@expo/vector-icons";
-import ScreenTitle from "../components/texts/ScreenTitle";
+
 import AppText from "../components/texts/AppText";
-import SectionTitle from "../components/texts/SectionTitle";
+import CategorySelector from "../components/CategorySelector";
+import colors from "../config/colors";
+import ListItemSeparator from "../components/ListItemSeparator";
 import Logo from "../components/texts/Logo";
 import Screen from "../components/Screen";
+import ScreenTitle from "../components/texts/ScreenTitle";
+import SectionTitle from "../components/texts/SectionTitle";
 
 /*
         <FlatList

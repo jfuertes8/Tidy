@@ -7,4 +7,6 @@ export default {
   gray: "#F2F2F2",
 
   danger: "tomato",
+
+  success: "#5FC6A3",
 };

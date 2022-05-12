@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: "Spartan_500Medium",
     fontSize: 16,
+    lineHeight: 24,
   },
 });
 

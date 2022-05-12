@@ -1,37 +1,11 @@
 import React from "react";
-import { StyleSheet, View, Text, Image, FlatList } from "react-native";
+import { StyleSheet, View, Image, FlatList } from "react-native";
 
 import Card from "../../components/Card";
 import colors from "../../config/colors";
-import ScreenTitle from "../../components/texts/ScreenTitle";
-import AppText from "../../components/texts/AppText";
-import Logo from "../../components/texts/Logo";
 import Screen from "../../components/Screen";
-
-/*
-        <FlatList
-          data={cardData}
-          keyExtractor={(card) => card.id.toString()}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => (
-            <Card
-              title={item.title}
-              subtitle={item.subtitle}
-              image={item.image}
-            ></Card>
-          )}
-        />
-
-
-        <View style={styles.emptyStateContainer}>
-          <Image source={require("../assets/empty-state.png")} />
-          <Text style={styles.emptyStateTitle}>Que vacío está esto...</Text>
-          <Text style={styles.emptyStateText}>
-            Parece que aún no has creado ningún armario. Puedes crear el primero
-            mediante el botón + más abajo.
-          </Text>
-        </View>
-*/
+import LandingHeader from "../../components/LandingHeader";
+import EmptyState from "../../components/EmptyState";
 
 const cardData = [
   {
@@ -44,12 +18,6 @@ const cardData = [
     title: "Armario de Madrid",
     subtitle: "Madrid",
   },
-  /*{
-    id: 3,
-    title: "Armario del pueblo",
-    subtitle: "Abelón",
-    image: require("../assets/wardrobe-landing2.jpg"),
-  },*/
 ];
 
 function WardrobeLandingScreen({ navigation }) {
@@ -57,18 +25,17 @@ function WardrobeLandingScreen({ navigation }) {
     <>
       <Screen>
         <View style={styles.bg}>
-          <Logo marginVertical={10} />
-          <ScreenTitle marginBottom={5}>Tus armarios</ScreenTitle>
-          <AppText marginBottom={30}>¡Hola Javier!</AppText>
+          <LandingHeader />
           <FlatList
+            horizontal={true}
             data={cardData}
             keyExtractor={(card) => card.id.toString()}
-            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
             renderItem={({ item }) => (
               <Card
                 title={item.title}
                 subtitle={item.subtitle}
-                image={require("../../assets/wardrobeimg.png")}
+                image={require("../../assets/category-bg.png")}
                 onPress={() => {
                   navigation.navigate("WardrobeDetail", {
                     title: item.title,
@@ -77,7 +44,12 @@ function WardrobeLandingScreen({ navigation }) {
                 }}
               ></Card>
             )}
+            style={{ flexGrow: 0 }}
           />
+          {/*<EmptyState
+            ctaText="Nuevo Armario"
+            onPress={() => console.log("new wardrobe tapped")}
+            />*/}
         </View>
       </Screen>
     </>
@@ -87,24 +59,9 @@ function WardrobeLandingScreen({ navigation }) {
 const styles = StyleSheet.create({
   bg: {
     padding: 20,
+    paddingRight: 0,
     backgroundColor: colors.gray,
     flex: 1,
-    justifyContent: "center",
-  },
-  emptyStateContainer: {
-    width: "100%",
-    alignItems: "center",
-  },
-  emptyStateTitle: {
-    textAlign: "center",
-    fontWeight: "700",
-    fontSize: 22,
-    marginVertical: 10,
-  },
-  emptyStateText: {
-    textAlign: "center",
-    width: "85%",
-    lineHeight: 22,
   },
 });
 
