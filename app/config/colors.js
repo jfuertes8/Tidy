@@ -8,5 +8,7 @@ export default {
 
   danger: "tomato",
 
+  //success/failure screens
   success: "#5FC6A3",
+  failure: "#EEC7C7",
 };

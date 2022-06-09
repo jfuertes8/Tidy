@@ -62,7 +62,7 @@ function WardrobeLandingScreen({ navigation }) {
 const styles = StyleSheet.create({
   bg: {
     padding: 20,
-    backgroundColor: colors.gray,
+    backgroundColor: colors.white,
     flex: 1,
   },
 });

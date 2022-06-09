@@ -52,11 +52,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: colors.gray,
+    backgroundColor: colors.white,
   },
   card: {
     width: "100%",
-    backgroundColor: colors.white,
+    backgroundColor: colors.gray,
     padding: 15,
     borderRadius: 8,
     marginBottom: 20,

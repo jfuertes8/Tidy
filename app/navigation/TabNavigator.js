@@ -32,7 +32,7 @@ const TabNavigator = () => (
         ),
       })}
     />
-    <Tab.Screen
+    {/*<Tab.Screen
       name="Trips"
       component={TripNavigator}
       options={({ route }) => ({
@@ -46,7 +46,7 @@ const TabNavigator = () => (
           />
         ),
       })}
-    />
+    />*/}
     <Tab.Screen
       name="Settings"
       component={SettingsNavigator}

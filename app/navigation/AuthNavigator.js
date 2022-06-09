@@ -21,7 +21,7 @@ const AuthNavigator = () => (
       options={{
         title: " ",
         headerStyle: {
-          backgroundColor: colors.white,
+          backgroundColor: colors.gray,
         },
         headerShadowVisible: false,
       }}

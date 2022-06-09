@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   loginContainer: {
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
-    backgroundColor: colors.white,
+    backgroundColor: colors.gray,
     padding: 20,
     paddingBottom: 40,
   },

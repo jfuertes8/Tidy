@@ -4,22 +4,21 @@ import { StyleSheet, View, Text, Image } from "react-native";
 import AppButton from "../components/other/AppButton";
 import colors from "../config/colors";
 import AppText from "../components/texts/AppText";
-import ScreenTitle from "../components/texts/ScreenTitle";
 
-function SuccessScreen(props) {
+function FailureScreen(props) {
   return (
     <View style={styles.bg}>
       <View style={styles.topElements}>
-        <Image source={require("../assets/checked.png")} style={styles.icon} />
-        <Text style={styles.successTitle}>¡Enhorabuena!</Text>
-        <AppText textAlign="center">
-          Has creado el armario con éxito. Puedes volver a la pantalla de
-          armario para visualizarlo.
-        </AppText>
         <Image
-          source={require("../assets/successImage.jpg")}
-          style={styles.image}
+          source={require("../assets/error-message.png")}
+          style={styles.icon}
         />
+        <Text style={styles.successTitle}>Vaya...</Text>
+        <AppText textAlign="center">
+          Parece que algo no ha salido como esperabamos. Por favor, vuelve a
+          intentarlo.
+        </AppText>
+        <Image source={require("../assets/fail.png")} style={styles.image} />
       </View>
       <AppButton
         style={styles.button}
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: "flex-end",
-    backgroundColor: colors.success,
+    backgroundColor: colors.failure,
   },
   icon: {
     width: 60,
@@ -61,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SuccessScreen;
+export default FailureScreen;

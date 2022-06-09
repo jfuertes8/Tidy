@@ -109,7 +109,7 @@ function NewUserScreen(props) {
 const styles = StyleSheet.create({
   bg: {
     padding: 20,
-    backgroundColor: colors.white,
+    backgroundColor: colors.gray,
     flex: 1,
   },
   formFields: {

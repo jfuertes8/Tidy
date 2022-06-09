@@ -35,12 +35,13 @@ const styles = StyleSheet.create({
   formInputField: {
     width: "100%",
     height: 50,
-    backgroundColor: colors.gray,
+    backgroundColor: colors.white,
     marginTop: 5,
-    borderRadius: 8,
     justifyContent: "center",
     alignItems: "flex-start",
     paddingHorizontal: 20,
+    borderBottomColor: colors.darkgray,
+    borderBottomWidth: 1,
   },
   textContainer: {
     flexDirection: "row",

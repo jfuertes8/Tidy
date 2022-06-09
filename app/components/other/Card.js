@@ -11,6 +11,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import AppText from "../texts/AppText";
 import CardTitle from "../texts/CardTitle";
+import CardAction from "./CardAction";
 
 function Card({ title, subtitle, onPress, image }) {
   return (
@@ -32,15 +33,15 @@ function Card({ title, subtitle, onPress, image }) {
         </View>
       </TouchableWithoutFeedback>
       <View style={styles.cardOptions}>
-        <View style={styles.option}>
-          <Feather name="edit-2" size={18} color="black" />
-        </View>
-        <View style={styles.option}>
-          <Feather name="plus" size={18} color="black" />
-        </View>
-        <View style={styles.option}>
-          <Feather name="trash-2" size={18} color="black" />
-        </View>
+        <CardAction title="Editar" icon="edit-2" action={1} />
+        <CardAction title="Borrar" icon="trash-2" action={2} />
+        <CardAction
+          title="Añadir"
+          icon="plus"
+          bgColor={colors.black}
+          textColor="white"
+          action={3}
+        />
       </View>
     </View>
   );
@@ -49,7 +50,7 @@ function Card({ title, subtitle, onPress, image }) {
 const styles = StyleSheet.create({
   card: {
     width: "100%",
-    backgroundColor: colors.white,
+    backgroundColor: colors.gray,
     borderRadius: 8,
     marginBottom: 20,
   },
@@ -77,15 +78,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 20,
     paddingTop: 0,
-  },
-  option: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginHorizontal: 5,
-    backgroundColor: colors.gray,
-    borderRadius: 20,
-    padding: 10,
   },
 });
 

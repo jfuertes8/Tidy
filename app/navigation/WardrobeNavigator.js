@@ -23,7 +23,7 @@ function WardrobeNavigator({ navigation, route }) {
         name="WardrobeDetail"
         component={WardrobeCategoryScreen}
         options={{
-          title: "Detalle del armario",
+          title: " ",
           headerShadowVisible: false,
           headerStyle: {
             backgroundColor: colors.gray,
@@ -34,7 +34,11 @@ function WardrobeNavigator({ navigation, route }) {
         name="CategoryDetail"
         component={CategoryDetailScreen}
         options={{
-          title: "Detalle de la categoría",
+          title: " ",
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: colors.gray,
+          },
         }}
       />
       <Stack.Screen
@@ -44,7 +48,7 @@ function WardrobeNavigator({ navigation, route }) {
           title: " ",
           headerShadowVisible: false,
           headerStyle: {
-            backgroundColor: colors.gray,
+            backgroundColor: colors.white,
           },
         }}
       />
