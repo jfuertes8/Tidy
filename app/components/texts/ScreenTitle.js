@@ -1,14 +1,14 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
-
-import { Spartan_500Medium } from "@expo-google-fonts/spartan";
 import { useFonts } from "expo-font";
+
 import colors from "../../config/colors";
 
 function ScreenTitle({ children, marginBottom, color = "black" }) {
-  let [fontsLoaded, error] = useFonts({
-    Spartan_500Medium,
-  });
+
+  const[fontsLoaded] = useFonts({
+    SemiBoldText: require('../../assets/fonts/Poppins-SemiBold.ttf')
+  })
 
   return (
     <Text
@@ -24,8 +24,8 @@ function ScreenTitle({ children, marginBottom, color = "black" }) {
 
 const styles = StyleSheet.create({
   text: {
+    fontFamily:'SemiBoldText',
     fontSize: 22,
-    fontFamily: "Spartan_500Medium",
   },
 });
 

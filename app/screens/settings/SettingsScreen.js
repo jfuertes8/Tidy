@@ -8,6 +8,7 @@ import ListItemSeparator from "../../components/other/ListItemSeparator";
 import CategorySelector from "../../components/other/CategorySelector";
 import AppText from "../../components/texts/AppText";
 import LandingHeader from "../../components/other/LandingHeader";
+import colors from "../../config/colors";
 
 const settingsOptions = [
   {
@@ -32,7 +33,7 @@ const settingsOptions = [
 
 function SettingsScreen({ navigation }) {
   return (
-    <Screen>
+    <Screen color='gray'>
       <View style={styles.bg}>
         <LandingHeader title="Ajustes" />
         <View style={styles.body}>
@@ -64,6 +65,7 @@ const styles = StyleSheet.create({
   bg: {
     flex: 1,
     padding: 20,
+    backgroundColor: colors.gray
   },
   body: { flex: 1 },
   bottom: {

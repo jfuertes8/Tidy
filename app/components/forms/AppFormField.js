@@ -4,24 +4,19 @@ import { StyleSheet, View, TextInput, Text } from "react-native";
 import colors from "../../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppText from "../texts/AppText";
-import { Spartan_500Medium } from "@expo-google-fonts/spartan";
-import { useFonts } from "expo-font";
 import ErrorMessage from "./ErrorMessage";
 
 function AppFormField({ icon, text, warning, visible, ...otherProps }) {
-  let [fontsLoaded, error] = useFonts({
-    Spartan_500Medium,
-  });
 
   return (
     <>
-      <View style={styles.textContainer}>
-        {icon && (
-          <MaterialCommunityIcons name={icon} size={15} style={styles.icon} />
-        )}
-        <AppText>{text}</AppText>
-      </View>
       <View style={styles.formInputField}>
+        <View style={styles.textContainer}>
+          {icon && (
+            <MaterialCommunityIcons name={icon} size={15} style={styles.icon} />
+          )}
+          <AppText>{text}</AppText>
+        </View>
         <TextInput {...otherProps} style={styles.input}></TextInput>
       </View>
       <View style={styles.warningMessage}>
@@ -34,14 +29,13 @@ function AppFormField({ icon, text, warning, visible, ...otherProps }) {
 const styles = StyleSheet.create({
   formInputField: {
     width: "100%",
-    height: 50,
+    height: 65,
     backgroundColor: colors.white,
     marginTop: 5,
     justifyContent: "center",
     alignItems: "flex-start",
     paddingHorizontal: 20,
-    borderBottomColor: colors.darkgray,
-    borderBottomWidth: 1,
+    borderRadius: 10
   },
   textContainer: {
     flexDirection: "row",
@@ -53,7 +47,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   input: {
-    fontFamily: "Spartan_500Medium",
     alignSelf: "stretch",
   },
   warningMessage: {

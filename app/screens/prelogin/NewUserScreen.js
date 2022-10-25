@@ -91,8 +91,7 @@ function NewUserScreen(props) {
                 />
                 <View style={styles.button}>
                   <AppButton
-                    bgColor="primary"
-                    bdColor="primary"
+                    bgColor="black"
                     title="Crear"
                     onPress={handleSubmit}
                   />

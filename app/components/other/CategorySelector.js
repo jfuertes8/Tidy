@@ -2,15 +2,13 @@ import React from "react";
 import {
   StyleSheet,
   View,
-  Text,
   Image,
-  TouchableWithoutFeedback,
+  TouchableHighlight,
 } from "react-native";
 
 import colors from "../../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppText from "../texts/AppText";
-import CardTitle from "../texts/CardTitle";
 
 function CategorySelector({
   title,
@@ -23,7 +21,7 @@ function CategorySelector({
   marginBottom,
 }) {
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
+    <TouchableHighlight activeOpacity={0.6} underlayColor={colors.gray} onPress={onPress}>
       <View
         style={[
           styles.categoryContainer,
@@ -46,7 +44,7 @@ function CategorySelector({
           />
         )}
       </View>
-    </TouchableWithoutFeedback>
+    </TouchableHighlight>
   );
 }
 
@@ -68,6 +66,8 @@ const styles = StyleSheet.create({
   },
   image: {
     marginRight: 15,
+    width: 35,
+    height: 35
   },
   icon: {
     marginRight: 15,

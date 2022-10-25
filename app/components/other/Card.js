@@ -4,80 +4,59 @@ import {
   View,
   Image,
   TouchableWithoutFeedback,
+  Dimensions
 } from "react-native";
 
 import colors from "../../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
 import AppText from "../texts/AppText";
 import CardTitle from "../texts/CardTitle";
-import CardAction from "./CardAction";
 
-function Card({ title, subtitle, onPress, image }) {
+function Card({ title, subtitle, onPress, image, bgColor, locationColor, clothesCount }) {
   return (
-    <View style={styles.card}>
-      <TouchableWithoutFeedback onPress={onPress}>
-        <View style={styles.cardInfo}>
-          <Image
-            source={require("../../assets/wardrobeimg.png")}
-            style={styles.image}
-          />
-          <View style={{ flex: 1 }}>
-            <CardTitle>{title}</CardTitle>
-            <View style={styles.locationContainer}>
-              <MaterialCommunityIcons name="map-marker" style={styles.icon} />
-              <AppText color="darkgray">{subtitle}</AppText>
-            </View>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={[styles.card, {backgroundColor: colors[bgColor]}]}>
+          <View style={styles.cardInfo}>
+            <Image
+              source={image}
+              style={styles.image}
+            />
+              <CardTitle>{title}</CardTitle>
+              <AppText>{clothesCount} prendas</AppText>
+              <View style={[styles.locationContainer, {backgroundColor: colors[locationColor]}]}>
+                <MaterialCommunityIcons name="map-marker" style={styles.icon} size={15} />
+                  <AppText>{subtitle}</AppText>
+              </View>
           </View>
-          <Feather name="chevron-right" size={16} color="black" />
-        </View>
-      </TouchableWithoutFeedback>
-      <View style={styles.cardOptions}>
-        <CardAction title="Editar" icon="edit-2" action={1} />
-        <CardAction title="Borrar" icon="trash-2" action={2} />
-        <CardAction
-          title="Añadir"
-          icon="plus"
-          bgColor={colors.black}
-          textColor="white"
-          action={3}
-        />
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
-    width: "100%",
-    backgroundColor: colors.gray,
+    width: (Dimensions.get('window').width - 20) / 2 - 5,
     borderRadius: 8,
-    marginBottom: 20,
+    padding: 15,
+    marginBottom: 10,
   },
   image: {
-    width: 60,
-    height: 60,
-  },
-  cardInfo: {
-    marginBottom: 15,
-    padding: 20,
-    paddingBottom: 0,
-    flexDirection: "row",
-    alignItems: "center",
+    width: 30,
+    height: 30,
+    marginBottom: 20,
   },
   locationContainer: {
+    width: '100%',
+    borderRadius: 8,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 5,
+    marginTop: 15,
   },
   icon: {
+    flex: 1,
     marginRight: 5,
-  },
-  cardOptions: {
-    width: "100%",
-    flexDirection: "row",
-    padding: 20,
-    paddingTop: 0,
   },
 });
 

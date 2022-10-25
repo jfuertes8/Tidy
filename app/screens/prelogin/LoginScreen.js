@@ -6,8 +6,6 @@ import * as yup from "yup";
 import AppButton from "../../components/other/AppButton";
 import AppFormField from "../../components/forms/AppFormField";
 import colors from "../../config/colors";
-import { PlayfairDisplay_600SemiBold } from "@expo-google-fonts/playfair-display";
-import { useFonts } from "expo-font";
 import AppText from "../../components/texts/AppText";
 import LinkText from "../../components/texts/LinkText";
 import ScreenTitle from "../../components/texts/ScreenTitle";
@@ -19,10 +17,6 @@ const validationSchema = yup.object().shape({
 });
 
 function LoginScreen({ navigation }) {
-  //Hook for custom Google Font
-  let [fontsLoaded, error] = useFonts({
-    PlayfairDisplay_600SemiBold,
-  });
 
   return (
     <View style={styles.bg}>
@@ -77,7 +71,7 @@ function LoginScreen({ navigation }) {
               />
               <AppButton
                 title="Entrar"
-                bgColor="primary"
+                bgColor="black"
                 onPress={() => navigation.navigate("LoginOk")}
                 //onPress={handleSubmit}
               />
@@ -117,7 +111,6 @@ const styles = StyleSheet.create({
   tagLine: {
     color: colors.white,
     fontSize: 30,
-    fontFamily: "PlayfairDisplay_600SemiBold",
   },
   loginContainer: {
     borderTopLeftRadius: 8,

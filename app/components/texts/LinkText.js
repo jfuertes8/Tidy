@@ -1,14 +1,15 @@
 import React from "react";
 import { Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
-
-import { Spartan_700Bold } from "@expo-google-fonts/spartan";
 import { useFonts } from "expo-font";
+
+
 import colors from "../../config/colors";
 
 function LinkText({ children, onPress, marginLeft, color = "primary" }) {
-  let [fontsLoaded, error] = useFonts({
-    Spartan_700Bold,
-  });
+
+  const[fontsLoaded] = useFonts({
+    RegularText: require('../../assets/fonts/Poppins-Regular.ttf')
+  })
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 12,
     color: colors.primary,
-    fontFamily: "Spartan_700Bold",
+    fontFamily: 'RegularText'
   },
 });
 

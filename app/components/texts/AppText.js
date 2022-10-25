@@ -1,9 +1,7 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
-
-import { Spartan_500Medium } from "@expo-google-fonts/spartan";
 import { useFonts } from "expo-font";
-import AppLoading from "expo-app-loading";
+
 import colors from "../../config/colors";
 
 function AppText({
@@ -13,17 +11,10 @@ function AppText({
   fontSize = 12,
   textAlign,
 }) {
-  let [fontsLoaded, error] = useFonts({
-    Spartan_500Medium,
-  });
 
-  {
-    /*
-    if (!fontsLoaded) {
-      return <AppLoading />;
-    }
-  */
-  }
+  const[fontsLoaded] = useFonts({
+    RegularText: require('../../assets/fonts/Poppins-Regular.ttf')
+  })
 
   return (
     <Text
@@ -44,7 +35,7 @@ function AppText({
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: "Spartan_500Medium",
+    fontFamily: 'RegularText',
     lineHeight: 22,
   },
 });

@@ -1,15 +1,19 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Feather } from "@expo/vector-icons";
 
+import colors from "../config/colors";
 import WardrobeLandingScreen from "../screens/wardrobes/WardrobeLandingScreen";
 import WardrobeCategoryScreen from "../screens/wardrobes/WardrobeCategoryScreen";
 import CategoryDetailScreen from "../screens/CategoryDetailScreen";
-import colors from "../config/colors";
 import NewWardrobeScreen from "../screens/wardrobes/NewWardrobeScreen";
+import ImageDetailScreen from "../screens/wardrobes/ImageDetailScreen";
+import NewClotheScreen from "../screens/wardrobes/NewClotheScreen";
 
 const Stack = createNativeStackNavigator();
 
 function WardrobeNavigator({ navigation, route }) {
+
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -22,30 +26,66 @@ function WardrobeNavigator({ navigation, route }) {
       <Stack.Screen
         name="WardrobeDetail"
         component={WardrobeCategoryScreen}
-        options={{
-          title: " ",
+        options={({ route }) => ({
+          title: '',
           headerShadowVisible: false,
           headerStyle: {
-            backgroundColor: colors.gray,
+            backgroundColor: colors[route.params.color],
           },
-        }}
+          headerRight: () => (
+            <>
+              <Feather name='edit-2' size={22} color={colors.black} style={{marginRight: 22}} />
+              <Feather name='trash-2' size={22} color={colors.black} style={{marginRight: 22}} />
+              <Feather name='plus' size={25} color={colors.black} onPress={() => {navigation.navigate('NewClothe')}} />
+            </>
+          ),
+        })}
       />
       <Stack.Screen
         name="CategoryDetail"
         component={CategoryDetailScreen}
-        options={{
+        options={({ route }) => ({
           title: " ",
           headerShadowVisible: false,
           headerStyle: {
-            backgroundColor: colors.gray,
+            backgroundColor: colors[route.params.color],
           },
-        }}
+          headerRight: () => (
+            <>
+              <Feather name='trash-2' size={22} color={colors.black} style={{marginRight: 22}} />
+              <Feather name='plus' size={25} color={colors.black} onPress={() => {navigation.navigate('NewClothe')}}/>
+            </>
+          ),
+        })}
+      />
+      <Stack.Screen
+        name="ImageDetail"
+        component={ImageDetailScreen}
+        options={({ route }) => ({
+          title: " ",
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: colors.black,
+          },
+          headerTintColor: colors.white
+        })}
       />
       <Stack.Screen
         name="NewWardrobe"
         component={NewWardrobeScreen}
         options={{
-          title: " ",
+          title: "",
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: colors.white,
+          },
+        }}
+      />
+      <Stack.Screen
+        name="NewClothe"
+        component={NewClotheScreen}
+        options={{
+          title: "",
           headerShadowVisible: false,
           headerStyle: {
             backgroundColor: colors.white,

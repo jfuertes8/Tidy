@@ -72,7 +72,8 @@ const getTabBarVisibility = (route) => {
     routeName === "NewTrip" ||
     routeName === "NewClothe" ||
     routeName === "Credits" ||
-    routeName === "Account"
+    routeName === "Account" ||
+    routeName === "ImageDetail"
   ) {
     return "none";
   } else {
@@ -81,3 +82,4 @@ const getTabBarVisibility = (route) => {
 };
 
 export default TabNavigator;
+

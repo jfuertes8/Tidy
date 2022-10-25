@@ -5,10 +5,11 @@ import ListItemSeparator from "../../components/other/ListItemSeparator";
 import CategorySelector from "../../components/other/CategorySelector";
 import colors from "../../config/colors";
 import SectionTitle from "../../components/texts/SectionTitle";
-import AppButton from "../../components/other/AppButton";
 import EmptyState from "../../components/other/EmptyState";
-import { SimpleLineIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import CardAction from "../../components/other/CardAction";
+import ScreenTitle from '../../components/texts/ScreenTitle';
+import AppText from "../../components/texts/AppText";
 
 const categoriesList = [
   {
@@ -27,16 +28,16 @@ const categoriesList = [
   },
   {
     id: 3,
-    title: "Calcetines",
+    title: "Accesorios",
     subtitle: "1 elemento",
-    image: require("../../assets/socks.png"),
+    image: require("../../assets/tie.png"),
     wardrobeName: "Armario de Madrid",
   },
   {
     id: 4,
-    title: "Bañadores",
+    title: "Calcetines",
     subtitle: "6 elementos",
-    image: require("../../assets/shorts.png"),
+    image: require("../../assets/socks.png"),
     wardrobeName: "Armario de Madrid",
   },
   {
@@ -48,44 +49,51 @@ const categoriesList = [
   },
   {
     id: 6,
-    title: "Jerseys",
+    title: "Mudas",
     subtitle: "5 elementos",
-    image: require("../../assets/jumper.png"),
+    image: require("../../assets/underwear.png"),
+    wardrobeName: "Armario de Madrid",
+  },
+  {
+    id: 7,
+    title: "Faldas",
+    subtitle: "5 elementos",
+    image: require("../../assets/skirt.png"),
+    wardrobeName: "Armario de Madrid",
+  },
+  {
+    id: 8,
+    title: "Guantes",
+    subtitle: "5 elementos",
+    image: require("../../assets/glove.png"),
     wardrobeName: "Armario de Madrid",
   },
 ];
 
 function WardrobeCategoryScreen({ navigation, route }) {
+
   return (
     <>
       <View style={styles.bg}>
-        <View style={styles.top}>
-          <Image
-            source={require("../../assets/login-bg.png")}
-            style={styles.image}
-          />
-          <View>
-            <Text style={styles.wardrobeName}>{route.params?.title}</Text>
-            <View style={{ flexDirection: "row" }}>
-              <SimpleLineIcons
-                name="location-pin"
-                size={18}
-                color={colors.black}
-                style={styles.locationIcon}
-              />
-              <Text>{route.params?.location}</Text>
+        <View style={{backgroundColor: colors[route.params?.color]}}>
+          <View style={styles.top}>
+            <Image
+              source={route.params?.image}
+              style={styles.image}
+            />
+            <View style={styles.titleLocation}>
+              <ScreenTitle style={styles.wardrobeName}>{route.params?.title}</ScreenTitle>
+              <View style={{ flexDirection: "row" }}>
+                <MaterialCommunityIcons
+                  name="map-marker"
+                  size={18}
+                  color={colors.black}
+                  style={styles.locationIcon}
+                />
+                <AppText>{route.params?.location}</AppText>
+              </View>
             </View>
           </View>
-        </View>
-        <View style={styles.cardOptions}>
-          <CardAction title="Editar" icon="edit-2" />
-          <CardAction title="Borrar" icon="trash-2" />
-          <CardAction
-            title="Añadir"
-            icon="plus"
-            bgColor={colors.black}
-            textColor="white"
-          />
         </View>
         <View style={styles.sectionTitle}>
           <SectionTitle>Tu ropa en este armario</SectionTitle>
@@ -96,19 +104,23 @@ function WardrobeCategoryScreen({ navigation, route }) {
             onPress={() => console.log("new clothe tapped")}
           />
           </View>*/}
-        <FlatList
-          data={categoriesList}
-          keyExtractor={(message) => message.id.toString()}
-          renderItem={({ item }) => (
-            <CategorySelector
-              title={item.title}
-              subtitle={item.subtitle}
-              image={item.image}
-              onPress={() => navigation.navigate("CategoryDetail", item)}
-            />
-          )}
-          ItemSeparatorComponent={ListItemSeparator}
-        />
+          <FlatList
+            data={categoriesList}
+            keyExtractor={(message) => message.id.toString()}
+            renderItem={({ item }) => (
+              <CategorySelector
+                title={item.title}
+                subtitle={item.subtitle}
+                image={item.image}
+                onPress={() => navigation.navigate("CategoryDetail", {
+                  image: item.image,
+                  title: item.title,
+                  wardrobeName: item.wardrobeName,
+                  color: route.params?.color})}
+              />
+            )}
+            ItemSeparatorComponent={ListItemSeparator}
+          />
       </View>
     </>
   );
@@ -117,7 +129,7 @@ function WardrobeCategoryScreen({ navigation, route }) {
 const styles = StyleSheet.create({
   bg: {
     flex: 1,
-    backgroundColor: colors.gray,
+    backgroundColor: colors.white,
   },
   top: {
     width: "100%",
@@ -127,16 +139,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   image: {
-    width: 100,
-    height: 100,
-    borderRadius: 70,
+    width: 60,
+    height: 60,
     marginBottom: 20,
-    marginRight: 15,
+    marginHorizontal: 15,
+  },
+  titleLocation: {
+    alignSelf: "flex-start"
   },
   wardrobeName: {
-    fontWeight: "900",
+    fontWeight: "600",
     fontSize: 22,
-    marginBottom: 8,
+    marginBottom: 5,
   },
   locationIcon: {
     marginRight: 5,
@@ -149,6 +163,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     marginLeft: 20,
+    marginTop: 25
   },
 });
 

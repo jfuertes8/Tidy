@@ -1,14 +1,13 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
-
-import { Spartan_600SemiBold } from "@expo-google-fonts/spartan";
 import { useFonts } from "expo-font";
-import AppLoading from "expo-app-loading";
+
 
 function SectionTitle({ children, marginBottom = 18 }) {
-  let [fontsLoaded, error] = useFonts({
-    Spartan_600SemiBold,
-  });
+
+  const[fontsLoaded] = useFonts({
+    RegularText: require('../../assets/fonts/Poppins-Regular.ttf')
+  })
 
   return (
     <Text style={[styles.text, { marginBottom: marginBottom }]}>
@@ -19,7 +18,7 @@ function SectionTitle({ children, marginBottom = 18 }) {
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: "Spartan_600SemiBold",
+    fontFamily: 'RegularText',
     fontSize: 16,
   },
 });
