@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   StyleSheet,
   View,
   Image,
   TouchableHighlight,
+  AppButton
 } from "react-native";
 
 import colors from "../../config/colors";
@@ -20,7 +21,11 @@ function CategorySelector({
   bgColor = "white",
   marginBottom,
 }) {
+
+  const [modalVisible, setModalVisible] = useState(false)
+
   return (
+    <>
     <TouchableHighlight activeOpacity={0.6} underlayColor={colors.gray} onPress={onPress}>
       <View
         style={[
@@ -45,6 +50,7 @@ function CategorySelector({
         )}
       </View>
     </TouchableHighlight>
+</>
   );
 }
 
