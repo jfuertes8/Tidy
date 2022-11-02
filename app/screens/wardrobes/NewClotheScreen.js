@@ -3,6 +3,7 @@ import { View, StyleSheet, Image, ScrollView } from "react-native";
 
 import AppFormField from "../../components/forms/AppFormField";
 import PickerField from "../../components/forms/PickerField";
+import QuantityField from "../../components/forms/QuantityField";
 import AppButton from "../../components/other/AppButton";
 import colors from "../../config/colors";
 import ScreenTitle from '../../components/texts/ScreenTitle';
@@ -70,15 +71,19 @@ function NewClotheScreen(props) {
             autoCapitalize="none"
             autoCorrect={false}
           />
-          <PickerField 
-            text='Selecciona categoría' 
-            items={categories} 
-            selectedItem={category} 
-            onSelectItem={item => setCategory(item)} 
-            defaultIcon={require('../../assets/categoryicon.png')} 
-            defaultText='Selecciona categoría'
-            modalTitle='Selecciona una categoría'
-          />
+          <View style={{flexDirection: 'row', width: '100%'}}>
+            <PickerField 
+              text='Selecciona categoría' 
+              items={categories} 
+              selectedItem={category} 
+              onSelectItem={item => setCategory(item)} 
+              defaultIcon={require('../../assets/categoryicon.png')} 
+              defaultText='Selecciona categoría'
+              modalTitle='Selecciona una categoría'
+            />
+            <View style={{width: 15}}></View>
+            <QuantityField />
+          </View>
 
           <AppButton bgColor="black" title="Añadir ropa" />
         </View>
