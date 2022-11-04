@@ -12,7 +12,7 @@ function ClothePillTitle({ children, marginVertical = 10 }) {
   })
 
   return (
-    <Text style={[styles.text, { marginVertical: marginVertical }]}>
+    <Text style={[styles.text, { marginTop: marginVertical }]}>
       {children}
     </Text>
   );
@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     fontFamily: 'BoldText',
     color: colors.black,
     fontSize: 14,
-    textAlign: 'center'
   },
 });
 

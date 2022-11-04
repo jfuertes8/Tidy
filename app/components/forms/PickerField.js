@@ -8,7 +8,7 @@ import AppText from "../texts/AppText";
 import ScreenTitle from "../texts/ScreenTitle";
 import ListItemSeparator from "../other/ListItemSeparator";
 
-function PickerField({ items, onSelectItem, selectedItem, defaultIcon, defaultText, modalTitle }) {
+function PickerField({ items, onSelectItem, selectedItem, defaultIcon, defaultText, modalTitle, chevron = true }) {
 
   const [modalVisible, setModalVisible] = useState(false)
 
@@ -20,7 +20,7 @@ function PickerField({ items, onSelectItem, selectedItem, defaultIcon, defaultTe
             <Image style={styles.pickedIcon} source={selectedItem ? selectedItem.icon : defaultIcon} />
             <AppText>{selectedItem ? selectedItem.label : defaultText}</AppText>
           </View>
-            <MaterialCommunityIcons name='chevron-up' size={18} />
+            {chevron && <MaterialCommunityIcons name='chevron-up' size={18} />}
         </View>
       </TouchableWithoutFeedback>
 

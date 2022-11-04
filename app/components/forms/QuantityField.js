@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { StyleSheet, View, Image, TouchableWithoutFeedback} from "react-native";
+import { StyleSheet, View, TouchableWithoutFeedback} from "react-native";
 
 import colors from "../../config/colors";
 import { AntDesign } from "@expo/vector-icons";
@@ -7,8 +7,10 @@ import AppText from "../texts/AppText";
 
 function QuantityField({ }) {
 
+  //State variable to store quantity and function to set new one
   const [quantity, setQuantity] = useState(1)
 
+  //Control minimum quantity of 1
   function reduceQuantity() {
     if (quantity >= 2) {
       setQuantity(quantity - 1)

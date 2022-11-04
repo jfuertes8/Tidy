@@ -19,14 +19,6 @@ function CategorySelector({ image, title, onPress }) {
               </TouchableWithoutFeedback>
               <View>
                 <ClothePillTitle style={styles.title}>{title}</ClothePillTitle>
-                <View style={styles.actions}>
-                  <View style={styles.actionBlock}>
-                    <Feather name="edit-2" size={18} style={styles.editIcon} />
-                  </View>
-                  <View style={styles.actionBlock}>
-                    <Feather name="trash-2" size={18} />
-                  </View>
-                </View>
               </View>
             </View>
   );
@@ -36,26 +28,15 @@ const styles = StyleSheet.create({
   container: {
     width: (Dimensions.get('window').width - 20) / 2 - 5,
     marginBottom: 15,
-    height: (Dimensions.get('window').width - 20) / 1.8,
-    backgroundColor: colors.gray,
+    backgroundColor: colors.white,
     borderRadius: 8,
-    padding: 8
+    padding: 8,
   },
   image: {
-    flex: 1,
+    height: 100,
     width: '100%',
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: colors.darkgray
+    borderRadius: 8
   },
-  actions: {
-    flexDirection: 'row',
-  },
-  actionBlock: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
 });
 
 export default CategorySelector;

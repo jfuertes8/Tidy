@@ -37,6 +37,7 @@ function SettingsScreen({ navigation }) {
   return (
     <>
       <Screen color='gray'>
+        
         <View style={styles.bg}>
           <LandingHeader title="Ajustes" />
           <View style={styles.body}>
@@ -95,13 +96,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modal: {
-    padding: 20
+    padding: 20,
+    height: '100%'
   },
   image: {
     height: 310,
     width: 175,
     alignSelf: 'center',
-    marginVertical: 20
+    marginTop: 40
+  },
+  modalTop: {
+    flex: 1
   }
 });
 

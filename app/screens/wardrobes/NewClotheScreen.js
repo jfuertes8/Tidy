@@ -59,33 +59,37 @@ function NewClotheScreen(props) {
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.topSide}>
-          <Image source={require('../../assets/new-clothe-bg.jpg')} style={styles.image} />
-        </View>
-        <View style={styles.bottomSide}>
-          <ScreenTitle marginBottom={15}>Nueva ropa</ScreenTitle>
-          <AppText marginBottom={15}>Ponle un nombre que te ayude a recordar la ropa y dinos que tipo de ropa es.</AppText>
-          <AppFormField
-            text="Nombre de la ropa"
-            placeholder="p. ej: Camiseta azul, el del viaje a México..."
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-          <View style={{flexDirection: 'row', width: '100%'}}>
-            <PickerField 
-              text='Selecciona categoría' 
-              items={categories} 
-              selectedItem={category} 
-              onSelectItem={item => setCategory(item)} 
-              defaultIcon={require('../../assets/categoryicon.png')} 
-              defaultText='Selecciona categoría'
-              modalTitle='Selecciona una categoría'
-            />
-            <View style={{width: 15}}></View>
-            <QuantityField />
+        <View style={{height: '100%'}}>
+          <View style={styles.topSide}>
+            <Image source={require('../../assets/new-clothe-bg.jpg')} style={styles.image} />
           </View>
-
-          <AppButton bgColor="black" title="Añadir ropa" />
+          <View style={styles.bottomSide}>
+            <ScreenTitle marginBottom={15}>Nueva ropa</ScreenTitle>
+            <AppText marginBottom={15}>Ponle un nombre que te ayude a recordar la ropa.</AppText>
+            <AppFormField
+              text="Nombre de la ropa"
+              placeholder="p. ej: Camiseta azul, el del viaje a México..."
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+            
+            <AppText marginBottom={15}>Añade categoría y cantidad</AppText>
+            <View style={{flexDirection: 'row', width: '100%'}}>
+              <PickerField 
+                text='Selecciona categoría'
+                chevron={false}
+                items={categories} 
+                selectedItem={category} 
+                onSelectItem={item => setCategory(item)} 
+                defaultIcon={require('../../assets/categoryicon.png')} 
+                defaultText='Selecciona categoría'
+                modalTitle='Selecciona una categoría'
+              />
+              <View style={{width: 15}}></View>
+              <QuantityField />
+            </View>
+            <AppButton bgColor="black" title="Añadir ropa" />
+          </View>
         </View>
       </ScrollView>
     </View>
