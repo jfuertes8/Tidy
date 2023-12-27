@@ -43,14 +43,13 @@ function WardrobeNavigator({ navigation, route }) {
         name="CategoryDetail"
         component={CategoryDetailScreen}
         options={({ route }) => ({
-          title: " ",
+          title: route.params?.title,
           headerShadowVisible: false,
           headerStyle: {
             backgroundColor: colors[route.params.color],
           },
           headerRight: () => (
             <>
-              <Feather name='trash-2' size={22} color={colors.black} style={{marginRight: 22}} />
               <Feather name='plus' size={25} color={colors.black} onPress={() => {navigation.navigate('NewClothe')}}/>
             </>
           ),

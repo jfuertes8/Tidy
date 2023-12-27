@@ -1,7 +1,6 @@
-import React, {useState} from "react";
-import { FlatList, View, StyleSheet, Image, Modal, TouchableWithoutFeedback } from "react-native";
+import React from "react";
+import { FlatList, View, StyleSheet, Image } from "react-native";
 
-import AppButton from "../../components/other/AppButton";
 import ListItemSeparator from "../../components/other/ListItemSeparator";
 import CategorySelector from "../../components/other/CategorySelector";
 import colors from "../../config/colors";
@@ -10,6 +9,7 @@ import EmptyState from "../../components/other/EmptyState";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ScreenTitle from '../../components/texts/ScreenTitle';
 import AppText from "../../components/texts/AppText";
+import OptionButton from "../../components/other/OptionButton";
 
 const categoriesList = [
   {
@@ -72,8 +72,6 @@ const categoriesList = [
 
 function WardrobeCategoryScreen({ navigation, route }) {
 
-  const [modalVisible, setModalVisible] = useState(false)
-
   return (
     <>
       <View style={styles.bg}>
@@ -94,28 +92,8 @@ function WardrobeCategoryScreen({ navigation, route }) {
                 <AppText>{route.params?.location}</AppText>
               </View>
               <View style={styles.optionsContainer}>
-                <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-                  <View style={styles.option}>
-                    <MaterialCommunityIcons
-                      name="trash-can-outline"
-                      size={18}
-                      color={colors.black}
-                      style={styles.locationIcon}
-                    />
-                    <AppText>Borrar</AppText>
-                  </View>
-                </TouchableWithoutFeedback>
-                <View style={styles.option}>
-                  <MaterialCommunityIcons
-                    name="playlist-edit"
-                    size={18}
-                    color={colors.black}
-                    style={styles.locationIcon}
-                  />
-                  <AppText>Editar</AppText>
-                </View>
-                <View></View>
-              
+                <OptionButton title='Borrar' iconName='trash-can-outline' modal />
+                <OptionButton title='Editar' iconName='playlist-edit' />
               </View>
             </View>
           </View>
@@ -147,18 +125,6 @@ function WardrobeCategoryScreen({ navigation, route }) {
             ItemSeparatorComponent={ListItemSeparator}
           />
       </View>
-
-      <Modal visible={modalVisible} animationType='slide'>
-        <View style={styles.modal}>
-          <View style={styles.modalTop}>
-            <ScreenTitle>¿Estas seguro?</ScreenTitle>
-            <AppText>Ten en cuenta que si borras el armario no lo podrás recuperar. ¿Quieres borrarlo de todas formas?</AppText>
-            <Image source={require('../../assets/delete-image.jpg')} style={styles.modalImage}/>
-          </View>
-          <AppButton bgColor="danger" title="Borrar armario" onPress={() => setModalVisible(false)}></AppButton>
-          <AppButton title="Volver" textColor="black" onPress={() => setModalVisible(false)}></AppButton>
-        </View>
-      </Modal>
     </>
   );
 }
@@ -197,35 +163,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 10
   },
-  option: {
-    flexDirection: 'row',
-    padding: 5,
-    paddingHorizontal: 8,
-    borderWidth: 1,
-    borderColor: colors.black,
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 16
-  },
   sectionTitle: {
     marginLeft: 20,
     marginTop: 25
   },
-  modal: {
-    padding: 20,
-    height: '100%'
-  },
-  modalImage: {
-    height: 300,
-    width: 300,
-    borderRadius: 150,
-    alignSelf: 'center',
-    marginTop: 75
-  },
-  modalTop: {
-    flex: 1
-  }
 });
 
 export default WardrobeCategoryScreen;

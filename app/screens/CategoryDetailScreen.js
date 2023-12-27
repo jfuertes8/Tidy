@@ -6,6 +6,7 @@ import colors from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ScreenTitle from "../components/texts/ScreenTitle";
 import AppText from "../components/texts/AppText";
+import OptionButton from "../components/other/OptionButton";
 
 const clothesList = [
   {
@@ -60,7 +61,6 @@ function CategoryDetailScreen({ navigation, route }) {
                 style={styles.image}
               />
               <View style={styles.titleLocation}>
-                <ScreenTitle>{route.params?.title}</ScreenTitle>
                 <View style={{ flexDirection: "row" }}>
                   <MaterialCommunityIcons
                     name="wardrobe-outline"
@@ -69,6 +69,9 @@ function CategoryDetailScreen({ navigation, route }) {
                     style={styles.locationIcon}
                   />
                   <AppText>{route.params?.wardrobeName}</AppText>
+                </View>
+                <View style={styles.optionsContainer}>
+                  <OptionButton title='Borrar' iconName='trash-can-outline' modal />
                 </View>
               </View>
         </View>
@@ -123,11 +126,10 @@ const styles = StyleSheet.create({
   locationIcon: {
     marginRight: 5,
   },
-  cardOptions: {
+  optionsContainer: {
     width: "100%",
     flexDirection: "row",
-    padding: 20,
-    paddingTop: 0,
+    marginTop: 10
   },
   bottomSide: {
     paddingHorizontal: 10,
